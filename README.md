@@ -8,8 +8,6 @@ Secret scanning is configured with a Gitleaks pre-commit hook:
 git config core.hooksPath .githooks
 ```
 
-Run or refresh the temporary tunnel:
+Published with GitHub Pages:
 
-```bash
-python3 ~/.codex/skills/serve-static-tunnel/scripts/serve_static_tunnel.py "/Users/robertfiedor/Documents/Chords Voicings Scales" --name chords-voicings-scales
-```
+https://robert-fiedor.github.io/chords-voicings-scales/
