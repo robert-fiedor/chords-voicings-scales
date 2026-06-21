@@ -1,9 +1,6 @@
 const Tone = window.Tone;
 const chordList = document.getElementById("chordList");
-const count = document.getElementById("count");
-const appTitle = document.getElementById("appTitle");
 const rootSelect = document.getElementById("rootSelect");
-const search = document.getElementById("search");
 const familyFilter = document.getElementById("familyFilter");
 
 const SHARP_NAMES = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
@@ -42,7 +39,6 @@ async function init() {
     stopActive();
     render();
   });
-  search.addEventListener("input", render);
   familyFilter.addEventListener("change", render);
 }
 
@@ -67,27 +63,15 @@ function buildFamilyFilter(chords) {
 }
 
 function render() {
-  const query = search.value.trim().toLowerCase();
   const family = familyFilter.value || "all";
   const selectedRootName = getSelectedRootName();
   const chords = sourceData.chords.map((chord) => transposeChord(chord, selectedRootSemitone)).filter((chord) => {
     const matchesFamily = family === "all" || chord.family === family;
-    const searchable = [
-      chord.symbol,
-      chord.baseSymbol,
-      chord.quality,
-      chord.family,
-      chord.tags?.join(" "),
-      chord.scaleChoices.map((scale) => scale.scaleName).join(" "),
-      chord.scaleChoices.map((scale) => getNonRootScale(chord, scale)?.name).join(" "),
-    ].join(" ").toLowerCase();
-    return matchesFamily && (!query || searchable.includes(query));
+    return matchesFamily;
   });
 
   renderedCards = [];
   chordList.replaceChildren();
-  count.textContent = `${chords.length} / ${sourceData.chords.length}`;
-  appTitle.textContent = `${selectedRootName} Chords Voicings Scales`;
   document.title = `${selectedRootName} Chords Voicings Scales`;
 
   if (!chords.length) {
