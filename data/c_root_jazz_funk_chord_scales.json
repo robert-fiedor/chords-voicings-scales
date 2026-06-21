@@ -1,0 +1,6922 @@
+{
+  "schemaVersion": "0.1.0",
+  "title": "C-root Jazz/Funk Chord-Scale Vocabulary",
+  "root": "C",
+  "description": "Practical C-root jazz/funk chord symbols with chord tones and ordered scale choices. Designed as seed data for an app that displays a chord and compatible scales.",
+  "importantNotes": [
+    "Scale choices are ordered by practical default, not by absolute theory law.",
+    "Chord-scale choice depends on musical function, key center, and voice-leading context.",
+    "Chord notes list chord tones/extensions, not a required voicing.",
+    "Enharmonic spelling favors chord function: #9 may appear as D# even though it sounds like Eb.",
+    "This file emphasizes common and musically useful jazz/funk chord-scale vocabulary, not every theoretically possible pitch-class combination."
+  ],
+  "recommendedAppFunctions": [
+    {
+      "name": "listChords",
+      "description": "Display all C-root chord symbols with filtering by family, quality, tag, and commonness."
+    },
+    {
+      "name": "showChord",
+      "description": "Given a chord id or symbol, display chord formula, chord notes, aliases, family, and voicing hints."
+    },
+    {
+      "name": "showScaleChoicesForChord",
+      "description": "For a selected chord, display ordered scale choices with scale formulas, notes, semitones, role, and reason."
+    },
+    {
+      "name": "filterByColor",
+      "description": "Filter chords by tonal color such as lydian, altered, diminished, whole-tone, sus, funk, blues, or tonic minor."
+    },
+    {
+      "name": "sortByCommonness",
+      "description": "Show beginner/common chords first while keeping rare advanced chords available."
+    }
+  ],
+  "intervalReference": {
+    "semitonesFromC": {
+      "C": 0,
+      "D♭/C♯": 1,
+      "D": 2,
+      "E♭/D♯": 3,
+      "E": 4,
+      "F": 5,
+      "G♭/F♯": 6,
+      "G": 7,
+      "A♭/G♯": 8,
+      "A": 9,
+      "B♭/A♯": 10,
+      "B": 11
+    }
+  },
+  "scaleLibrary": {
+    "C_ionian": {
+      "name": "C Ionian / C major",
+      "family": "major modes",
+      "formula": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "notes": [
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "A",
+        "B"
+      ],
+      "semitones": [
+        0,
+        2,
+        4,
+        5,
+        7,
+        9,
+        11
+      ],
+      "use": "Straight major/maj7 sound."
+    },
+    "C_lydian": {
+      "name": "C Lydian",
+      "family": "major modes",
+      "formula": [
+        "1",
+        "2",
+        "3",
+        "♯4/♯11",
+        "5",
+        "6",
+        "7"
+      ],
+      "notes": [
+        "C",
+        "D",
+        "E",
+        "F♯",
+        "G",
+        "A",
+        "B"
+      ],
+      "semitones": [
+        0,
+        2,
+        4,
+        6,
+        7,
+        9,
+        11
+      ],
+      "use": "Bright major sound; common jazz choice for maj7(#11) colors."
+    },
+    "C_lydian_augmented": {
+      "name": "C Lydian Augmented",
+      "family": "melodic minor modes",
+      "formula": [
+        "1",
+        "2",
+        "3",
+        "♯4/♯11",
+        "♯5",
+        "6",
+        "7"
+      ],
+      "notes": [
+        "C",
+        "D",
+        "E",
+        "F♯",
+        "G♯",
+        "A",
+        "B"
+      ],
+      "semitones": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        9,
+        11
+      ],
+      "use": "Major seventh with #5 and #11 color; melodic-minor mode 3 sound."
+    },
+    "C_major_pentatonic": {
+      "name": "C Major Pentatonic",
+      "family": "pentatonic",
+      "formula": [
+        "1",
+        "2",
+        "3",
+        "5",
+        "6"
+      ],
+      "notes": [
+        "C",
+        "D",
+        "E",
+        "G",
+        "A"
+      ],
+      "semitones": [
+        0,
+        2,
+        4,
+        7,
+        9
+      ],
+      "use": "Open major/funk color; useful over C6, C6/9, Cmaj, and some sus sounds."
+    },
+    "C_dorian": {
+      "name": "C Dorian",
+      "family": "major modes",
+      "formula": [
+        "1",
+        "2",
+        "♭3",
+        "4/11",
+        "5",
+        "6/13",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "D",
+        "E♭",
+        "F",
+        "G",
+        "A",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        2,
+        3,
+        5,
+        7,
+        9,
+        10
+      ],
+      "use": "Default jazz minor-seventh sound, especially m9/m11/m13."
+    },
+    "C_aeolian": {
+      "name": "C Aeolian / natural minor",
+      "family": "major modes",
+      "formula": [
+        "1",
+        "2",
+        "♭3",
+        "4/11",
+        "5",
+        "♭6/♭13",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "D",
+        "E♭",
+        "F",
+        "G",
+        "A♭",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        2,
+        3,
+        5,
+        7,
+        8,
+        10
+      ],
+      "use": "Darker minor-seventh sound with b13."
+    },
+    "C_phrygian": {
+      "name": "C Phrygian",
+      "family": "major modes",
+      "formula": [
+        "1",
+        "♭2/♭9",
+        "♭3",
+        "4/11",
+        "5",
+        "♭6/♭13",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "D♭",
+        "E♭",
+        "F",
+        "G",
+        "A♭",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        1,
+        3,
+        5,
+        7,
+        8,
+        10
+      ],
+      "use": "Minor sound with b9; useful for m7(b9), modal funk, dark vamps."
+    },
+    "C_melodic_minor": {
+      "name": "C Melodic Minor / jazz minor",
+      "family": "melodic minor",
+      "formula": [
+        "1",
+        "2",
+        "♭3",
+        "4/11",
+        "5",
+        "6/13",
+        "7"
+      ],
+      "notes": [
+        "C",
+        "D",
+        "E♭",
+        "F",
+        "G",
+        "A",
+        "B"
+      ],
+      "semitones": [
+        0,
+        2,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "use": "Minor-major, minor 6, and sophisticated tonic minor colors."
+    },
+    "C_harmonic_minor": {
+      "name": "C Harmonic Minor",
+      "family": "harmonic minor",
+      "formula": [
+        "1",
+        "2",
+        "♭3",
+        "4/11",
+        "5",
+        "♭6/♭13",
+        "7"
+      ],
+      "notes": [
+        "C",
+        "D",
+        "E♭",
+        "F",
+        "G",
+        "A♭",
+        "B"
+      ],
+      "semitones": [
+        0,
+        2,
+        3,
+        5,
+        7,
+        8,
+        11
+      ],
+      "use": "Minor-major with b13; darker classical/minor-key dominant gravity."
+    },
+    "C_minor_pentatonic": {
+      "name": "C Minor Pentatonic",
+      "family": "pentatonic",
+      "formula": [
+        "1",
+        "♭3",
+        "4/11",
+        "5",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "E♭",
+        "F",
+        "G",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        3,
+        5,
+        7,
+        10
+      ],
+      "use": "Funk/blues minor color over minor, sus, and dominant vamps."
+    },
+    "C_blues": {
+      "name": "C Blues Scale",
+      "family": "blues",
+      "formula": [
+        "1",
+        "♭3",
+        "4/11",
+        "♭5/♯11",
+        "5",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "E♭",
+        "F",
+        "G♭",
+        "G",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        3,
+        5,
+        6,
+        7,
+        10
+      ],
+      "use": "Blue-note vocabulary over C7, Cm7, and funk vamps."
+    },
+    "C_mixolydian": {
+      "name": "C Mixolydian",
+      "family": "major modes",
+      "formula": [
+        "1",
+        "2/9",
+        "3",
+        "4/11",
+        "5",
+        "6/13",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "A",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        2,
+        4,
+        5,
+        7,
+        9,
+        10
+      ],
+      "use": "Default unaltered dominant scale: C7, C9, C13."
+    },
+    "C_bebop_dominant": {
+      "name": "C Bebop Dominant",
+      "family": "bebop",
+      "formula": [
+        "1",
+        "2/9",
+        "3",
+        "4/11",
+        "5",
+        "6/13",
+        "♭7",
+        "7 passing"
+      ],
+      "notes": [
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "A",
+        "B♭",
+        "B"
+      ],
+      "semitones": [
+        0,
+        2,
+        4,
+        5,
+        7,
+        9,
+        10,
+        11
+      ],
+      "use": "Dominant bebop vocabulary; adds natural 7 as a passing tone."
+    },
+    "C_mixolydian_blues": {
+      "name": "C Mixolydian Blues",
+      "family": "hybrid/blues",
+      "formula": [
+        "1",
+        "2/9",
+        "♭3 blue",
+        "3",
+        "4/11",
+        "5",
+        "6/13",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "D",
+        "E♭",
+        "E",
+        "F",
+        "G",
+        "A",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        7,
+        9,
+        10
+      ],
+      "use": "Funk/R&B dominant color with both minor and major third."
+    },
+    "C_lydian_dominant": {
+      "name": "C Lydian Dominant / C Mixolydian #11",
+      "family": "melodic minor modes",
+      "formula": [
+        "1",
+        "2/9",
+        "3",
+        "♯4/♯11",
+        "5",
+        "6/13",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "D",
+        "E",
+        "F♯",
+        "G",
+        "A",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        2,
+        4,
+        6,
+        7,
+        9,
+        10
+      ],
+      "use": "Dominant #11 sound; common for 7#11, 9#11, 13#11 and tritone-sub colors."
+    },
+    "C_altered": {
+      "name": "C Altered / C Super Locrian",
+      "family": "melodic minor modes",
+      "formula": [
+        "1",
+        "♭9",
+        "♯9",
+        "3",
+        "♭5/♯11",
+        "♯5/♭13",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "D♭",
+        "D♯",
+        "E",
+        "G♭",
+        "G♯",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        8,
+        10
+      ],
+      "use": "Maximum altered dominant tension: b9, #9, b5/#11, #5/b13."
+    },
+    "C_half_whole_diminished": {
+      "name": "C Half-Whole Diminished",
+      "family": "diminished/octatonic",
+      "formula": [
+        "1",
+        "♭9",
+        "♯9",
+        "3",
+        "♯11/♭5",
+        "5",
+        "13",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "D♭",
+        "D♯",
+        "E",
+        "F♯",
+        "G",
+        "A",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        7,
+        9,
+        10
+      ],
+      "use": "Dominant diminished sound; strong for 13(b9), 7(b9), 7(#9), and diminished-dominant colors."
+    },
+    "C_whole_tone": {
+      "name": "C Whole Tone",
+      "family": "symmetric",
+      "formula": [
+        "1",
+        "2/9",
+        "3",
+        "♯4/♯11",
+        "♯5/♭13",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "D",
+        "E",
+        "F♯",
+        "G♯",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "use": "Augmented dominant sound: 7#5, 9#5, 7#11#5."
+    },
+    "C_phrygian_dominant": {
+      "name": "C Phrygian Dominant / Mixolydian b9 b13",
+      "family": "harmonic minor modes",
+      "formula": [
+        "1",
+        "♭9",
+        "3",
+        "4/11",
+        "5",
+        "♭13",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "D♭",
+        "E",
+        "F",
+        "G",
+        "A♭",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        1,
+        4,
+        5,
+        7,
+        8,
+        10
+      ],
+      "use": "Dominant b9 b13, common as V of minor or darker dominant color."
+    },
+    "C_locrian": {
+      "name": "C Locrian",
+      "family": "major modes",
+      "formula": [
+        "1",
+        "♭9",
+        "♭3",
+        "4/11",
+        "♭5",
+        "♭13",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "D♭",
+        "E♭",
+        "F",
+        "G♭",
+        "A♭",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        1,
+        3,
+        5,
+        6,
+        8,
+        10
+      ],
+      "use": "Basic half-diminished sound."
+    },
+    "C_locrian_natural_2": {
+      "name": "C Locrian Natural 2",
+      "family": "melodic minor modes",
+      "formula": [
+        "1",
+        "2/9",
+        "♭3",
+        "4/11",
+        "♭5",
+        "♭13",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "D",
+        "E♭",
+        "F",
+        "G♭",
+        "A♭",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        2,
+        3,
+        5,
+        6,
+        8,
+        10
+      ],
+      "use": "Half-diminished with natural 9; common jazz choice for m7b5/ø9."
+    },
+    "C_whole_half_diminished": {
+      "name": "C Whole-Half Diminished",
+      "family": "diminished/octatonic",
+      "formula": [
+        "1",
+        "2/9",
+        "♭3",
+        "4/11",
+        "♭5",
+        "♭13",
+        "13/𝄫7",
+        "7"
+      ],
+      "notes": [
+        "C",
+        "D",
+        "E♭",
+        "F",
+        "G♭",
+        "A♭",
+        "A",
+        "B"
+      ],
+      "semitones": [
+        0,
+        2,
+        3,
+        5,
+        6,
+        8,
+        9,
+        11
+      ],
+      "use": "Diminished seventh chord-scale."
+    },
+    "C_dominant_sus": {
+      "name": "C Dominant Sus / Mixolydian Sus",
+      "family": "suspended dominant",
+      "formula": [
+        "1",
+        "2/9",
+        "4/11",
+        "5",
+        "6/13",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "D",
+        "F",
+        "G",
+        "A",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        2,
+        5,
+        7,
+        9,
+        10
+      ],
+      "use": "Dominant sus sound without the major 3rd; useful over 7sus4, 9sus4, 13sus4."
+    },
+    "C_sus_pentatonic": {
+      "name": "C Sus Pentatonic",
+      "family": "pentatonic",
+      "formula": [
+        "1",
+        "2/9",
+        "4/11",
+        "5",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "D",
+        "F",
+        "G",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        2,
+        5,
+        7,
+        10
+      ],
+      "use": "Compact sus/funk voicing vocabulary."
+    },
+    "C_dominant_pentatonic": {
+      "name": "C Dominant Pentatonic",
+      "family": "pentatonic",
+      "formula": [
+        "1",
+        "2/9",
+        "3",
+        "5",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "D",
+        "E",
+        "G",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        2,
+        4,
+        7,
+        10
+      ],
+      "use": "Clean funk/R&B dominant sound."
+    },
+    "C_augmented": {
+      "name": "C Augmented Scale",
+      "family": "symmetric",
+      "formula": [
+        "1",
+        "♭3/♯9",
+        "3",
+        "5",
+        "♯5",
+        "7"
+      ],
+      "notes": [
+        "C",
+        "E♭",
+        "E",
+        "G",
+        "G♯",
+        "B"
+      ],
+      "semitones": [
+        0,
+        3,
+        4,
+        7,
+        8,
+        11
+      ],
+      "use": "Symmetric augmented major color; useful for maj7#5 and augmented triad colors."
+    }
+  },
+  "chords": [
+    {
+      "id": "Cmaj7",
+      "symbol": "Cmaj7",
+      "aliases": [
+        "CΔ7",
+        "CM7"
+      ],
+      "family": "major",
+      "quality": "major seventh",
+      "commonness": 5,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "7"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        11
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_lydian",
+          "scaleName": "C Lydian",
+          "role": "primary jazz color",
+          "formula": [
+            "1",
+            "2",
+            "3",
+            "♯4/♯11",
+            "5",
+            "6",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F♯",
+            "G",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            6,
+            7,
+            9,
+            11
+          ],
+          "reason": "Common modern/jazz tonic-major color; #11 avoids the natural 11 clash with 3."
+        },
+        {
+          "scaleId": "C_ionian",
+          "scaleName": "C Ionian / C major",
+          "role": "inside/basic",
+          "formula": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            5,
+            7,
+            9,
+            11
+          ],
+          "reason": "Plain major-key sound."
+        }
+      ],
+      "tags": [
+        "tonic major",
+        "jazz standard"
+      ]
+    },
+    {
+      "id": "Cmaj9",
+      "symbol": "Cmaj9",
+      "aliases": [
+        "CΔ9"
+      ],
+      "family": "major",
+      "quality": "major ninth",
+      "commonness": 5,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "7",
+        "9"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B",
+        "D"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        11,
+        2
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_lydian",
+          "scaleName": "C Lydian",
+          "role": "primary jazz color",
+          "formula": [
+            "1",
+            "2",
+            "3",
+            "♯4/♯11",
+            "5",
+            "6",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F♯",
+            "G",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            6,
+            7,
+            9,
+            11
+          ],
+          "reason": "Works well for maj9 and leaves room for #11 color."
+        },
+        {
+          "scaleId": "C_ionian",
+          "scaleName": "C Ionian / C major",
+          "role": "inside/basic",
+          "formula": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            5,
+            7,
+            9,
+            11
+          ],
+          "reason": "Matches the unaltered major 9 chord."
+        }
+      ],
+      "tags": [
+        "tonic major"
+      ]
+    },
+    {
+      "id": "Cmaj13",
+      "symbol": "Cmaj13",
+      "aliases": [
+        "CΔ13"
+      ],
+      "family": "major",
+      "quality": "major thirteenth",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "7",
+        "9",
+        "13"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B",
+        "D",
+        "A"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        11,
+        2,
+        9
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_lydian",
+          "scaleName": "C Lydian",
+          "role": "primary jazz color",
+          "formula": [
+            "1",
+            "2",
+            "3",
+            "♯4/♯11",
+            "5",
+            "6",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F♯",
+            "G",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            6,
+            7,
+            9,
+            11
+          ],
+          "reason": "Maj13 often implies 9 and 13; Lydian gives a jazz #11 option."
+        },
+        {
+          "scaleId": "C_ionian",
+          "scaleName": "C Ionian / C major",
+          "role": "inside/basic",
+          "formula": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            5,
+            7,
+            9,
+            11
+          ],
+          "reason": "Fully inside major scale."
+        }
+      ],
+      "tags": [
+        "tonic major"
+      ]
+    },
+    {
+      "id": "C6",
+      "symbol": "C6",
+      "aliases": [
+        "Cmaj6"
+      ],
+      "family": "major",
+      "quality": "major sixth",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "6"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "A"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        9
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_major_pentatonic",
+          "scaleName": "C Major Pentatonic",
+          "role": "primary funk/simple",
+          "formula": [
+            "1",
+            "2",
+            "3",
+            "5",
+            "6"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "G",
+            "A"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            7,
+            9
+          ],
+          "reason": "Clear open 6 sound."
+        },
+        {
+          "scaleId": "C_ionian",
+          "scaleName": "C Ionian / C major",
+          "role": "inside/basic",
+          "formula": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            5,
+            7,
+            9,
+            11
+          ],
+          "reason": "Plain major 6 chord color."
+        }
+      ],
+      "tags": [
+        "funk",
+        "soul",
+        "tonic major"
+      ]
+    },
+    {
+      "id": "C6_9",
+      "symbol": "C6/9",
+      "aliases": [
+        "C6add9"
+      ],
+      "family": "major",
+      "quality": "major sixth/ninth",
+      "commonness": 5,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "6",
+        "9"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "A",
+        "D"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        9,
+        2
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_major_pentatonic",
+          "scaleName": "C Major Pentatonic",
+          "role": "primary funk/simple",
+          "formula": [
+            "1",
+            "2",
+            "3",
+            "5",
+            "6"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "G",
+            "A"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            7,
+            9
+          ],
+          "reason": "The chord tones are the C major pentatonic scale."
+        },
+        {
+          "scaleId": "C_lydian",
+          "scaleName": "C Lydian",
+          "role": "modern jazz option",
+          "formula": [
+            "1",
+            "2",
+            "3",
+            "♯4/♯11",
+            "5",
+            "6",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F♯",
+            "G",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            6,
+            7,
+            9,
+            11
+          ],
+          "reason": "Adds possible #11 color."
+        }
+      ],
+      "tags": [
+        "funk",
+        "neo-soul",
+        "tonic major"
+      ]
+    },
+    {
+      "id": "Cmaj7_11",
+      "symbol": "Cmaj7#11",
+      "aliases": [
+        "CΔ7#11",
+        "Cmaj7♯11"
+      ],
+      "family": "major",
+      "quality": "major seventh sharp eleven",
+      "commonness": 5,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "7",
+        "♯11"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B",
+        "F♯"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        11,
+        6
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_lydian",
+          "scaleName": "C Lydian",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2",
+            "3",
+            "♯4/♯11",
+            "5",
+            "6",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F♯",
+            "G",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            6,
+            7,
+            9,
+            11
+          ],
+          "reason": "Directly contains the #11 color."
+        }
+      ],
+      "tags": [
+        "lydian",
+        "modern jazz"
+      ]
+    },
+    {
+      "id": "Cmaj9_11",
+      "symbol": "Cmaj9#11",
+      "aliases": [
+        "CΔ9#11",
+        "Cmaj9♯11"
+      ],
+      "family": "major",
+      "quality": "major ninth sharp eleven",
+      "commonness": 5,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "7",
+        "9",
+        "♯11"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B",
+        "D",
+        "F♯"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        11,
+        2,
+        6
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_lydian",
+          "scaleName": "C Lydian",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2",
+            "3",
+            "♯4/♯11",
+            "5",
+            "6",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F♯",
+            "G",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            6,
+            7,
+            9,
+            11
+          ],
+          "reason": "Directly contains 9 and #11."
+        }
+      ],
+      "tags": [
+        "lydian",
+        "modern jazz"
+      ]
+    },
+    {
+      "id": "Cmaj13_11",
+      "symbol": "Cmaj13#11",
+      "aliases": [
+        "CΔ13#11",
+        "Cmaj13♯11"
+      ],
+      "family": "major",
+      "quality": "major thirteenth sharp eleven",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "7",
+        "9",
+        "♯11",
+        "13"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B",
+        "D",
+        "F♯",
+        "A"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        11,
+        2,
+        6,
+        9
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_lydian",
+          "scaleName": "C Lydian",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2",
+            "3",
+            "♯4/♯11",
+            "5",
+            "6",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F♯",
+            "G",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            6,
+            7,
+            9,
+            11
+          ],
+          "reason": "The full C Lydian stack can be heard as Cmaj13#11."
+        }
+      ],
+      "tags": [
+        "lydian",
+        "modern jazz"
+      ]
+    },
+    {
+      "id": "Cmaj7_sharp5",
+      "symbol": "Cmaj7#5",
+      "aliases": [
+        "CΔ7#5",
+        "Cmaj7+5"
+      ],
+      "family": "major augmented",
+      "quality": "major seventh sharp five",
+      "commonness": 3,
+      "formula": [
+        "1",
+        "3",
+        "♯5",
+        "7"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G♯",
+        "B"
+      ],
+      "semitones": [
+        0,
+        4,
+        8,
+        11
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_lydian_augmented",
+          "scaleName": "C Lydian Augmented",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2",
+            "3",
+            "♯4/♯11",
+            "♯5",
+            "6",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F♯",
+            "G♯",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            6,
+            8,
+            9,
+            11
+          ],
+          "reason": "Contains 3, #5 and 7; standard melodic-minor color."
+        },
+        {
+          "scaleId": "C_augmented",
+          "scaleName": "C Augmented Scale",
+          "role": "alternate symmetric",
+          "formula": [
+            "1",
+            "♭3/♯9",
+            "3",
+            "5",
+            "♯5",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "E♭",
+            "E",
+            "G",
+            "G♯",
+            "B"
+          ],
+          "semitones": [
+            0,
+            3,
+            4,
+            7,
+            8,
+            11
+          ],
+          "reason": "Works as a compact augmented-major color."
+        }
+      ],
+      "tags": [
+        "modern jazz",
+        "augmented"
+      ]
+    },
+    {
+      "id": "Cmaj9_sharp5",
+      "symbol": "Cmaj9#5",
+      "aliases": [
+        "CΔ9#5",
+        "Cmaj9+5"
+      ],
+      "family": "major augmented",
+      "quality": "major ninth sharp five",
+      "commonness": 3,
+      "formula": [
+        "1",
+        "3",
+        "♯5",
+        "7",
+        "9"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G♯",
+        "B",
+        "D"
+      ],
+      "semitones": [
+        0,
+        4,
+        8,
+        11,
+        2
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_lydian_augmented",
+          "scaleName": "C Lydian Augmented",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2",
+            "3",
+            "♯4/♯11",
+            "♯5",
+            "6",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F♯",
+            "G♯",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            6,
+            8,
+            9,
+            11
+          ],
+          "reason": "Contains 9, #5 and major 7."
+        }
+      ],
+      "tags": [
+        "modern jazz",
+        "augmented"
+      ]
+    },
+    {
+      "id": "Cmaj7_sharp5_sharp11",
+      "symbol": "Cmaj7#5#11",
+      "aliases": [
+        "CΔ7#5#11"
+      ],
+      "family": "major augmented",
+      "quality": "major seventh sharp five sharp eleven",
+      "commonness": 2,
+      "formula": [
+        "1",
+        "3",
+        "♯5",
+        "7",
+        "♯11"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G♯",
+        "B",
+        "F♯"
+      ],
+      "semitones": [
+        0,
+        4,
+        8,
+        11,
+        6
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_lydian_augmented",
+          "scaleName": "C Lydian Augmented",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2",
+            "3",
+            "♯4/♯11",
+            "♯5",
+            "6",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F♯",
+            "G♯",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            6,
+            8,
+            9,
+            11
+          ],
+          "reason": "Direct melodic-minor mode 3 sound."
+        }
+      ],
+      "tags": [
+        "advanced",
+        "modern jazz"
+      ]
+    },
+    {
+      "id": "Cm7",
+      "symbol": "Cm7",
+      "aliases": [
+        "C-7",
+        "Cmin7"
+      ],
+      "family": "minor",
+      "quality": "minor seventh",
+      "commonness": 5,
+      "formula": [
+        "1",
+        "♭3",
+        "5",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "E♭",
+        "G",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        3,
+        7,
+        10
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_dorian",
+          "scaleName": "C Dorian",
+          "role": "primary jazz color",
+          "formula": [
+            "1",
+            "2",
+            "♭3",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "F",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            5,
+            7,
+            9,
+            10
+          ],
+          "reason": "Default minor-seventh sound in many jazz contexts."
+        },
+        {
+          "scaleId": "C_aeolian",
+          "scaleName": "C Aeolian / natural minor",
+          "role": "darker option",
+          "formula": [
+            "1",
+            "2",
+            "♭3",
+            "4/11",
+            "5",
+            "♭6/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "F",
+            "G",
+            "A♭",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            5,
+            7,
+            8,
+            10
+          ],
+          "reason": "Adds b13 instead of natural 13."
+        },
+        {
+          "scaleId": "C_minor_pentatonic",
+          "scaleName": "C Minor Pentatonic",
+          "role": "funk/blues option",
+          "formula": [
+            "1",
+            "♭3",
+            "4/11",
+            "5",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "E♭",
+            "F",
+            "G",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            3,
+            5,
+            7,
+            10
+          ],
+          "reason": "Compact minor/funk vocabulary."
+        }
+      ],
+      "tags": [
+        "minor",
+        "funk"
+      ]
+    },
+    {
+      "id": "Cm9",
+      "symbol": "Cm9",
+      "aliases": [
+        "C-9"
+      ],
+      "family": "minor",
+      "quality": "minor ninth",
+      "commonness": 5,
+      "formula": [
+        "1",
+        "♭3",
+        "5",
+        "♭7",
+        "9"
+      ],
+      "notes": [
+        "C",
+        "E♭",
+        "G",
+        "B♭",
+        "D"
+      ],
+      "semitones": [
+        0,
+        3,
+        7,
+        10,
+        2
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_dorian",
+          "scaleName": "C Dorian",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2",
+            "♭3",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "F",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            5,
+            7,
+            9,
+            10
+          ],
+          "reason": "Directly contains 9 and natural 13 option."
+        },
+        {
+          "scaleId": "C_melodic_minor",
+          "scaleName": "C Melodic Minor / jazz minor",
+          "role": "tonic minor option",
+          "formula": [
+            "1",
+            "2",
+            "♭3",
+            "4/11",
+            "5",
+            "6/13",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "F",
+            "G",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            5,
+            7,
+            9,
+            11
+          ],
+          "reason": "Useful when a natural 7 is acceptable as color or passing tone."
+        }
+      ],
+      "tags": [
+        "minor",
+        "jazz"
+      ]
+    },
+    {
+      "id": "Cm11",
+      "symbol": "Cm11",
+      "aliases": [
+        "C-11"
+      ],
+      "family": "minor",
+      "quality": "minor eleventh",
+      "commonness": 5,
+      "formula": [
+        "1",
+        "♭3",
+        "5",
+        "♭7",
+        "9",
+        "11"
+      ],
+      "notes": [
+        "C",
+        "E♭",
+        "G",
+        "B♭",
+        "D",
+        "F"
+      ],
+      "semitones": [
+        0,
+        3,
+        7,
+        10,
+        2,
+        5
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_dorian",
+          "scaleName": "C Dorian",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2",
+            "♭3",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "F",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            5,
+            7,
+            9,
+            10
+          ],
+          "reason": "Contains the full m11 sound with natural 13 available."
+        },
+        {
+          "scaleId": "C_minor_pentatonic",
+          "scaleName": "C Minor Pentatonic",
+          "role": "funk option",
+          "formula": [
+            "1",
+            "♭3",
+            "4/11",
+            "5",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "E♭",
+            "F",
+            "G",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            3,
+            5,
+            7,
+            10
+          ],
+          "reason": "Highlights 1-b3-4-5-b7."
+        }
+      ],
+      "tags": [
+        "minor",
+        "modal",
+        "funk"
+      ]
+    },
+    {
+      "id": "Cm13",
+      "symbol": "Cm13",
+      "aliases": [
+        "C-13"
+      ],
+      "family": "minor",
+      "quality": "minor thirteenth",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "♭3",
+        "5",
+        "♭7",
+        "9",
+        "11",
+        "13"
+      ],
+      "notes": [
+        "C",
+        "E♭",
+        "G",
+        "B♭",
+        "D",
+        "F",
+        "A"
+      ],
+      "semitones": [
+        0,
+        3,
+        7,
+        10,
+        2,
+        5,
+        9
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_dorian",
+          "scaleName": "C Dorian",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2",
+            "♭3",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "F",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            5,
+            7,
+            9,
+            10
+          ],
+          "reason": "Dorian is the source sound for m13 with natural 13."
+        }
+      ],
+      "tags": [
+        "minor",
+        "dorian"
+      ]
+    },
+    {
+      "id": "Cm6",
+      "symbol": "Cm6",
+      "aliases": [
+        "Cmin6"
+      ],
+      "family": "minor",
+      "quality": "minor sixth",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "♭3",
+        "5",
+        "6"
+      ],
+      "notes": [
+        "C",
+        "E♭",
+        "G",
+        "A"
+      ],
+      "semitones": [
+        0,
+        3,
+        7,
+        9
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_melodic_minor",
+          "scaleName": "C Melodic Minor / jazz minor",
+          "role": "primary jazz tonic minor",
+          "formula": [
+            "1",
+            "2",
+            "♭3",
+            "4/11",
+            "5",
+            "6/13",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "F",
+            "G",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            5,
+            7,
+            9,
+            11
+          ],
+          "reason": "Minor with natural 6 and major 7 color available."
+        },
+        {
+          "scaleId": "C_dorian",
+          "scaleName": "C Dorian",
+          "role": "modal option",
+          "formula": [
+            "1",
+            "2",
+            "♭3",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "F",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            5,
+            7,
+            9,
+            10
+          ],
+          "reason": "Minor 6 without major 7 emphasis."
+        }
+      ],
+      "tags": [
+        "minor",
+        "tonic minor"
+      ]
+    },
+    {
+      "id": "Cm6_9",
+      "symbol": "Cm6/9",
+      "aliases": [
+        "C-6/9"
+      ],
+      "family": "minor",
+      "quality": "minor sixth/ninth",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "♭3",
+        "5",
+        "6",
+        "9"
+      ],
+      "notes": [
+        "C",
+        "E♭",
+        "G",
+        "A",
+        "D"
+      ],
+      "semitones": [
+        0,
+        3,
+        7,
+        9,
+        2
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_melodic_minor",
+          "scaleName": "C Melodic Minor / jazz minor",
+          "role": "primary jazz tonic minor",
+          "formula": [
+            "1",
+            "2",
+            "♭3",
+            "4/11",
+            "5",
+            "6/13",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "F",
+            "G",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            5,
+            7,
+            9,
+            11
+          ],
+          "reason": "Contains the m6/9 chord and supports tonic-minor color."
+        },
+        {
+          "scaleId": "C_dorian",
+          "scaleName": "C Dorian",
+          "role": "modal option",
+          "formula": [
+            "1",
+            "2",
+            "♭3",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "F",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            5,
+            7,
+            9,
+            10
+          ],
+          "reason": "Works for a less leading-tone minor sound."
+        }
+      ],
+      "tags": [
+        "minor",
+        "jazz tonic minor"
+      ]
+    },
+    {
+      "id": "CmMaj7",
+      "symbol": "Cm(maj7)",
+      "aliases": [
+        "CmΔ7",
+        "C-Δ7",
+        "CminMaj7"
+      ],
+      "family": "minor-major",
+      "quality": "minor major seventh",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "♭3",
+        "5",
+        "7"
+      ],
+      "notes": [
+        "C",
+        "E♭",
+        "G",
+        "B"
+      ],
+      "semitones": [
+        0,
+        3,
+        7,
+        11
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_melodic_minor",
+          "scaleName": "C Melodic Minor / jazz minor",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2",
+            "♭3",
+            "4/11",
+            "5",
+            "6/13",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "F",
+            "G",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            5,
+            7,
+            9,
+            11
+          ],
+          "reason": "Direct minor-major seventh chord scale."
+        },
+        {
+          "scaleId": "C_harmonic_minor",
+          "scaleName": "C Harmonic Minor",
+          "role": "darker option",
+          "formula": [
+            "1",
+            "2",
+            "♭3",
+            "4/11",
+            "5",
+            "♭6/♭13",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "F",
+            "G",
+            "A♭",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            5,
+            7,
+            8,
+            11
+          ],
+          "reason": "Adds b13 color."
+        }
+      ],
+      "tags": [
+        "tonic minor",
+        "jazz"
+      ]
+    },
+    {
+      "id": "CmMaj9",
+      "symbol": "Cm(maj9)",
+      "aliases": [
+        "CmΔ9",
+        "C-Δ9"
+      ],
+      "family": "minor-major",
+      "quality": "minor major ninth",
+      "commonness": 3,
+      "formula": [
+        "1",
+        "♭3",
+        "5",
+        "7",
+        "9"
+      ],
+      "notes": [
+        "C",
+        "E♭",
+        "G",
+        "B",
+        "D"
+      ],
+      "semitones": [
+        0,
+        3,
+        7,
+        11,
+        2
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_melodic_minor",
+          "scaleName": "C Melodic Minor / jazz minor",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2",
+            "♭3",
+            "4/11",
+            "5",
+            "6/13",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "F",
+            "G",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            5,
+            7,
+            9,
+            11
+          ],
+          "reason": "Contains mMaj9 directly."
+        }
+      ],
+      "tags": [
+        "tonic minor",
+        "jazz"
+      ]
+    },
+    {
+      "id": "CmMaj13",
+      "symbol": "Cm(maj13)",
+      "aliases": [
+        "CmΔ13",
+        "C-Δ13"
+      ],
+      "family": "minor-major",
+      "quality": "minor major thirteenth",
+      "commonness": 2,
+      "formula": [
+        "1",
+        "♭3",
+        "5",
+        "7",
+        "9",
+        "11",
+        "13"
+      ],
+      "notes": [
+        "C",
+        "E♭",
+        "G",
+        "B",
+        "D",
+        "F",
+        "A"
+      ],
+      "semitones": [
+        0,
+        3,
+        7,
+        11,
+        2,
+        5,
+        9
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_melodic_minor",
+          "scaleName": "C Melodic Minor / jazz minor",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2",
+            "♭3",
+            "4/11",
+            "5",
+            "6/13",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "F",
+            "G",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            5,
+            7,
+            9,
+            11
+          ],
+          "reason": "The full jazz minor stack."
+        }
+      ],
+      "tags": [
+        "tonic minor",
+        "advanced"
+      ]
+    },
+    {
+      "id": "Cm7_b13",
+      "symbol": "Cm7b13",
+      "aliases": [
+        "Cm7♭13"
+      ],
+      "family": "minor",
+      "quality": "minor seventh flat thirteen",
+      "commonness": 3,
+      "formula": [
+        "1",
+        "♭3",
+        "5",
+        "♭7",
+        "♭13"
+      ],
+      "notes": [
+        "C",
+        "E♭",
+        "G",
+        "B♭",
+        "A♭"
+      ],
+      "semitones": [
+        0,
+        3,
+        7,
+        10,
+        8
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_aeolian",
+          "scaleName": "C Aeolian / natural minor",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2",
+            "♭3",
+            "4/11",
+            "5",
+            "♭6/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "F",
+            "G",
+            "A♭",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            5,
+            7,
+            8,
+            10
+          ],
+          "reason": "Direct minor with b13."
+        },
+        {
+          "scaleId": "C_phrygian",
+          "scaleName": "C Phrygian",
+          "role": "darker option",
+          "formula": [
+            "1",
+            "♭2/♭9",
+            "♭3",
+            "4/11",
+            "5",
+            "♭6/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "E♭",
+            "F",
+            "G",
+            "A♭",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            5,
+            7,
+            8,
+            10
+          ],
+          "reason": "Adds b9 color too."
+        }
+      ],
+      "tags": [
+        "dark minor"
+      ]
+    },
+    {
+      "id": "Cm7_b9",
+      "symbol": "Cm7b9",
+      "aliases": [
+        "Cm7♭9"
+      ],
+      "family": "minor",
+      "quality": "minor seventh flat nine",
+      "commonness": 2,
+      "formula": [
+        "1",
+        "♭3",
+        "5",
+        "♭7",
+        "♭9"
+      ],
+      "notes": [
+        "C",
+        "E♭",
+        "G",
+        "B♭",
+        "D♭"
+      ],
+      "semitones": [
+        0,
+        3,
+        7,
+        10,
+        1
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_phrygian",
+          "scaleName": "C Phrygian",
+          "role": "primary",
+          "formula": [
+            "1",
+            "♭2/♭9",
+            "♭3",
+            "4/11",
+            "5",
+            "♭6/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "E♭",
+            "F",
+            "G",
+            "A♭",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            5,
+            7,
+            8,
+            10
+          ],
+          "reason": "Direct minor b9 sound."
+        }
+      ],
+      "tags": [
+        "phrygian",
+        "modal"
+      ]
+    },
+    {
+      "id": "Cm11_b9",
+      "symbol": "Cm11b9",
+      "aliases": [
+        "Cm11♭9"
+      ],
+      "family": "minor",
+      "quality": "minor eleventh flat nine",
+      "commonness": 2,
+      "formula": [
+        "1",
+        "♭3",
+        "5",
+        "♭7",
+        "♭9",
+        "11"
+      ],
+      "notes": [
+        "C",
+        "E♭",
+        "G",
+        "B♭",
+        "D♭",
+        "F"
+      ],
+      "semitones": [
+        0,
+        3,
+        7,
+        10,
+        1,
+        5
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_phrygian",
+          "scaleName": "C Phrygian",
+          "role": "primary",
+          "formula": [
+            "1",
+            "♭2/♭9",
+            "♭3",
+            "4/11",
+            "5",
+            "♭6/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "E♭",
+            "F",
+            "G",
+            "A♭",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            5,
+            7,
+            8,
+            10
+          ],
+          "reason": "Contains b9 and 11 in a minor context."
+        }
+      ],
+      "tags": [
+        "phrygian",
+        "modal"
+      ]
+    },
+    {
+      "id": "Cm7_b5",
+      "symbol": "Cm7b5",
+      "aliases": [
+        "Cø7",
+        "Cmin7b5"
+      ],
+      "family": "half-diminished",
+      "quality": "half-diminished seventh",
+      "commonness": 5,
+      "formula": [
+        "1",
+        "♭3",
+        "♭5",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "E♭",
+        "G♭",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        3,
+        6,
+        10
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_locrian_natural_2",
+          "scaleName": "C Locrian Natural 2",
+          "role": "primary jazz color",
+          "formula": [
+            "1",
+            "2/9",
+            "♭3",
+            "4/11",
+            "♭5",
+            "♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "F",
+            "G♭",
+            "A♭",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            5,
+            6,
+            8,
+            10
+          ],
+          "reason": "Natural 9 is a common jazz color for half-diminished chords."
+        },
+        {
+          "scaleId": "C_locrian",
+          "scaleName": "C Locrian",
+          "role": "inside/basic",
+          "formula": [
+            "1",
+            "♭9",
+            "♭3",
+            "4/11",
+            "♭5",
+            "♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "E♭",
+            "F",
+            "G♭",
+            "A♭",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            5,
+            6,
+            8,
+            10
+          ],
+          "reason": "Basic locrian half-diminished sound."
+        }
+      ],
+      "tags": [
+        "minor ii",
+        "jazz"
+      ]
+    },
+    {
+      "id": "Cm9_b5",
+      "symbol": "Cm9b5",
+      "aliases": [
+        "Cø9"
+      ],
+      "family": "half-diminished",
+      "quality": "half-diminished ninth",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "♭3",
+        "♭5",
+        "♭7",
+        "9"
+      ],
+      "notes": [
+        "C",
+        "E♭",
+        "G♭",
+        "B♭",
+        "D"
+      ],
+      "semitones": [
+        0,
+        3,
+        6,
+        10,
+        2
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_locrian_natural_2",
+          "scaleName": "C Locrian Natural 2",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2/9",
+            "♭3",
+            "4/11",
+            "♭5",
+            "♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "F",
+            "G♭",
+            "A♭",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            5,
+            6,
+            8,
+            10
+          ],
+          "reason": "Directly contains natural 9 over m7b5."
+        }
+      ],
+      "tags": [
+        "minor ii",
+        "jazz"
+      ]
+    },
+    {
+      "id": "Cm11_b5",
+      "symbol": "Cm11b5",
+      "aliases": [
+        "Cø11"
+      ],
+      "family": "half-diminished",
+      "quality": "half-diminished eleventh",
+      "commonness": 3,
+      "formula": [
+        "1",
+        "♭3",
+        "♭5",
+        "♭7",
+        "9",
+        "11"
+      ],
+      "notes": [
+        "C",
+        "E♭",
+        "G♭",
+        "B♭",
+        "D",
+        "F"
+      ],
+      "semitones": [
+        0,
+        3,
+        6,
+        10,
+        2,
+        5
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_locrian_natural_2",
+          "scaleName": "C Locrian Natural 2",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2/9",
+            "♭3",
+            "4/11",
+            "♭5",
+            "♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "F",
+            "G♭",
+            "A♭",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            5,
+            6,
+            8,
+            10
+          ],
+          "reason": "Contains 9 and 11 over the half-diminished shell."
+        }
+      ],
+      "tags": [
+        "minor ii",
+        "jazz"
+      ]
+    },
+    {
+      "id": "C7",
+      "symbol": "C7",
+      "aliases": [],
+      "family": "dominant",
+      "quality": "dominant seventh",
+      "commonness": 5,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        10
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_mixolydian",
+          "scaleName": "C Mixolydian",
+          "role": "primary inside",
+          "formula": [
+            "1",
+            "2/9",
+            "3",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            5,
+            7,
+            9,
+            10
+          ],
+          "reason": "Default unaltered dominant sound."
+        },
+        {
+          "scaleId": "C_bebop_dominant",
+          "scaleName": "C Bebop Dominant",
+          "role": "bebop option",
+          "formula": [
+            "1",
+            "2/9",
+            "3",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7",
+            "7 passing"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "A",
+            "B♭",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            5,
+            7,
+            9,
+            10,
+            11
+          ],
+          "reason": "Adds passing major 7 for linear phrasing."
+        },
+        {
+          "scaleId": "C_mixolydian_blues",
+          "scaleName": "C Mixolydian Blues",
+          "role": "funk/blues option",
+          "formula": [
+            "1",
+            "2/9",
+            "♭3 blue",
+            "3",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "E",
+            "F",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            7,
+            9,
+            10
+          ],
+          "reason": "Adds blue minor 3 against dominant."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "funk",
+        "blues"
+      ]
+    },
+    {
+      "id": "C9",
+      "symbol": "C9",
+      "aliases": [],
+      "family": "dominant",
+      "quality": "dominant ninth",
+      "commonness": 5,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "♭7",
+        "9"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B♭",
+        "D"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        10,
+        2
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_mixolydian",
+          "scaleName": "C Mixolydian",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2/9",
+            "3",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            5,
+            7,
+            9,
+            10
+          ],
+          "reason": "Direct unaltered 9 chord scale."
+        },
+        {
+          "scaleId": "C_dominant_pentatonic",
+          "scaleName": "C Dominant Pentatonic",
+          "role": "funk/simple",
+          "formula": [
+            "1",
+            "2/9",
+            "3",
+            "5",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "G",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            7,
+            10
+          ],
+          "reason": "Compact dominant 9 color."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "funk"
+      ]
+    },
+    {
+      "id": "C11",
+      "symbol": "C11",
+      "aliases": [],
+      "family": "dominant/sus",
+      "quality": "dominant eleventh",
+      "commonness": 3,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "♭7",
+        "9",
+        "11"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B♭",
+        "D",
+        "F"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        10,
+        2,
+        5
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_mixolydian",
+          "scaleName": "C Mixolydian",
+          "role": "primary but watch 3/11",
+          "formula": [
+            "1",
+            "2/9",
+            "3",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            5,
+            7,
+            9,
+            10
+          ],
+          "reason": "Contains 11, but natural 11 can rub against the major 3; often voiced as sus."
+        },
+        {
+          "scaleId": "C_dominant_sus",
+          "scaleName": "C Dominant Sus / Mixolydian Sus",
+          "role": "sus option",
+          "formula": [
+            "1",
+            "2/9",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "F",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            5,
+            7,
+            9,
+            10
+          ],
+          "reason": "Use when the 3rd is omitted or delayed."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "ambiguous"
+      ],
+      "caveat": "In practice, C11 is often treated or voiced like C9sus4 rather than a full 3+11 chord."
+    },
+    {
+      "id": "C13",
+      "symbol": "C13",
+      "aliases": [],
+      "family": "dominant",
+      "quality": "dominant thirteenth",
+      "commonness": 5,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "♭7",
+        "9",
+        "13"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B♭",
+        "D",
+        "A"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        10,
+        2,
+        9
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_mixolydian",
+          "scaleName": "C Mixolydian",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2/9",
+            "3",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            5,
+            7,
+            9,
+            10
+          ],
+          "reason": "Direct unaltered 13 chord scale."
+        },
+        {
+          "scaleId": "C_bebop_dominant",
+          "scaleName": "C Bebop Dominant",
+          "role": "bebop option",
+          "formula": [
+            "1",
+            "2/9",
+            "3",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7",
+            "7 passing"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "A",
+            "B♭",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            5,
+            7,
+            9,
+            10,
+            11
+          ],
+          "reason": "Strong for bebop dominant lines."
+        },
+        {
+          "scaleId": "C_mixolydian_blues",
+          "scaleName": "C Mixolydian Blues",
+          "role": "funk option",
+          "formula": [
+            "1",
+            "2/9",
+            "♭3 blue",
+            "3",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "E",
+            "F",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            7,
+            9,
+            10
+          ],
+          "reason": "Common funk/blues dominant color."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "funk",
+        "soul"
+      ]
+    },
+    {
+      "id": "C7sus4",
+      "symbol": "C7sus4",
+      "aliases": [
+        "C7sus"
+      ],
+      "family": "suspended dominant",
+      "quality": "dominant suspended fourth",
+      "commonness": 5,
+      "formula": [
+        "1",
+        "4",
+        "5",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "F",
+        "G",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        5,
+        7,
+        10
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_dominant_sus",
+          "scaleName": "C Dominant Sus / Mixolydian Sus",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2/9",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "F",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            5,
+            7,
+            9,
+            10
+          ],
+          "reason": "No 3rd; emphasizes 4/11 suspension."
+        },
+        {
+          "scaleId": "C_sus_pentatonic",
+          "scaleName": "C Sus Pentatonic",
+          "role": "compact funk option",
+          "formula": [
+            "1",
+            "2/9",
+            "4/11",
+            "5",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "F",
+            "G",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            5,
+            7,
+            10
+          ],
+          "reason": "Great for riffs and quartal voicings."
+        },
+        {
+          "scaleId": "C_minor_pentatonic",
+          "scaleName": "C Minor Pentatonic",
+          "role": "blues/funk option",
+          "formula": [
+            "1",
+            "♭3",
+            "4/11",
+            "5",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "E♭",
+            "F",
+            "G",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            3,
+            5,
+            7,
+            10
+          ],
+          "reason": "Useful if a darker/b3 blues color is desired."
+        }
+      ],
+      "tags": [
+        "sus",
+        "funk",
+        "quartal"
+      ]
+    },
+    {
+      "id": "C9sus4",
+      "symbol": "C9sus4",
+      "aliases": [
+        "C11(no3)"
+      ],
+      "family": "suspended dominant",
+      "quality": "dominant ninth suspended fourth",
+      "commonness": 5,
+      "formula": [
+        "1",
+        "4",
+        "5",
+        "♭7",
+        "9"
+      ],
+      "notes": [
+        "C",
+        "F",
+        "G",
+        "B♭",
+        "D"
+      ],
+      "semitones": [
+        0,
+        5,
+        7,
+        10,
+        2
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_dominant_sus",
+          "scaleName": "C Dominant Sus / Mixolydian Sus",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2/9",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "F",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            5,
+            7,
+            9,
+            10
+          ],
+          "reason": "Direct 9sus4/11 sound without 3."
+        },
+        {
+          "scaleId": "C_sus_pentatonic",
+          "scaleName": "C Sus Pentatonic",
+          "role": "compact funk option",
+          "formula": [
+            "1",
+            "2/9",
+            "4/11",
+            "5",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "F",
+            "G",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            5,
+            7,
+            10
+          ],
+          "reason": "Exactly outlines 1-9-11-5-b7."
+        }
+      ],
+      "tags": [
+        "sus",
+        "funk",
+        "modal"
+      ]
+    },
+    {
+      "id": "C13sus4",
+      "symbol": "C13sus4",
+      "aliases": [
+        "C13sus"
+      ],
+      "family": "suspended dominant",
+      "quality": "dominant thirteenth suspended fourth",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "4",
+        "5",
+        "♭7",
+        "9",
+        "13"
+      ],
+      "notes": [
+        "C",
+        "F",
+        "G",
+        "B♭",
+        "D",
+        "A"
+      ],
+      "semitones": [
+        0,
+        5,
+        7,
+        10,
+        2,
+        9
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_dominant_sus",
+          "scaleName": "C Dominant Sus / Mixolydian Sus",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2/9",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "F",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            5,
+            7,
+            9,
+            10
+          ],
+          "reason": "Direct 13sus sound."
+        },
+        {
+          "scaleId": "C_dorian",
+          "scaleName": "C Dorian",
+          "role": "modal option",
+          "formula": [
+            "1",
+            "2",
+            "♭3",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "F",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            5,
+            7,
+            9,
+            10
+          ],
+          "reason": "Adds b3 color if the sus dominant is used in a minor/funk context."
+        }
+      ],
+      "tags": [
+        "sus",
+        "funk",
+        "modal"
+      ]
+    },
+    {
+      "id": "C7sus2",
+      "symbol": "C7sus2",
+      "aliases": [],
+      "family": "suspended dominant",
+      "quality": "dominant suspended second",
+      "commonness": 3,
+      "formula": [
+        "1",
+        "2/9",
+        "5",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "D",
+        "G",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        2,
+        7,
+        10
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_sus_pentatonic",
+          "scaleName": "C Sus Pentatonic",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2/9",
+            "4/11",
+            "5",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "F",
+            "G",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            5,
+            7,
+            10
+          ],
+          "reason": "Compact sus2 dominant sound."
+        },
+        {
+          "scaleId": "C_dominant_sus",
+          "scaleName": "C Dominant Sus / Mixolydian Sus",
+          "role": "broader option",
+          "formula": [
+            "1",
+            "2/9",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "F",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            5,
+            7,
+            9,
+            10
+          ],
+          "reason": "Adds 4 and 13 as available colors."
+        }
+      ],
+      "tags": [
+        "sus2",
+        "funk"
+      ]
+    },
+    {
+      "id": "C7sus4_b9",
+      "symbol": "C7sus4b9",
+      "aliases": [
+        "C7sus♭9"
+      ],
+      "family": "suspended dominant",
+      "quality": "dominant sus flat nine",
+      "commonness": 2,
+      "formula": [
+        "1",
+        "4",
+        "5",
+        "♭7",
+        "♭9"
+      ],
+      "notes": [
+        "C",
+        "F",
+        "G",
+        "B♭",
+        "D♭"
+      ],
+      "semitones": [
+        0,
+        5,
+        7,
+        10,
+        1
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_phrygian",
+          "scaleName": "C Phrygian",
+          "role": "primary modal sus",
+          "formula": [
+            "1",
+            "♭2/♭9",
+            "♭3",
+            "4/11",
+            "5",
+            "♭6/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "E♭",
+            "F",
+            "G",
+            "A♭",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            5,
+            7,
+            8,
+            10
+          ],
+          "reason": "No major 3rd; b9 and sus4 imply a Phrygian/sus color."
+        },
+        {
+          "scaleId": "C_phrygian_dominant",
+          "scaleName": "C Phrygian Dominant / Mixolydian b9 b13",
+          "role": "dominant option",
+          "formula": [
+            "1",
+            "♭9",
+            "3",
+            "4/11",
+            "5",
+            "♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "E",
+            "F",
+            "G",
+            "A♭",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            4,
+            5,
+            7,
+            8,
+            10
+          ],
+          "reason": "Use when the major 3rd is introduced as a resolution color."
+        }
+      ],
+      "tags": [
+        "sus",
+        "phrygian"
+      ]
+    },
+    {
+      "id": "C7_11",
+      "symbol": "C7#11",
+      "aliases": [
+        "C7♯11",
+        "C7b5(add5)"
+      ],
+      "family": "lydian dominant",
+      "quality": "dominant seventh sharp eleven",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "♭7",
+        "♯11"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B♭",
+        "F♯"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        10,
+        6
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_lydian_dominant",
+          "scaleName": "C Lydian Dominant / C Mixolydian #11",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2/9",
+            "3",
+            "♯4/♯11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F♯",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            6,
+            7,
+            9,
+            10
+          ],
+          "reason": "Direct dominant #11 scale."
+        },
+        {
+          "scaleId": "C_whole_tone",
+          "scaleName": "C Whole Tone",
+          "role": "augmented option",
+          "formula": [
+            "1",
+            "2/9",
+            "3",
+            "♯4/♯11",
+            "♯5/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F♯",
+            "G♯",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10
+          ],
+          "reason": "Works if #5/b13 color is also desired."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "lydian dominant"
+      ]
+    },
+    {
+      "id": "C9_11",
+      "symbol": "C9#11",
+      "aliases": [
+        "C9♯11"
+      ],
+      "family": "lydian dominant",
+      "quality": "dominant ninth sharp eleven",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "♭7",
+        "9",
+        "♯11"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B♭",
+        "D",
+        "F♯"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        10,
+        2,
+        6
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_lydian_dominant",
+          "scaleName": "C Lydian Dominant / C Mixolydian #11",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2/9",
+            "3",
+            "♯4/♯11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F♯",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            6,
+            7,
+            9,
+            10
+          ],
+          "reason": "Direct 9#11 dominant sound."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "lydian dominant"
+      ]
+    },
+    {
+      "id": "C13_11",
+      "symbol": "C13#11",
+      "aliases": [
+        "C13♯11"
+      ],
+      "family": "lydian dominant",
+      "quality": "dominant thirteenth sharp eleven",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "♭7",
+        "9",
+        "♯11",
+        "13"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B♭",
+        "D",
+        "F♯",
+        "A"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        10,
+        2,
+        6,
+        9
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_lydian_dominant",
+          "scaleName": "C Lydian Dominant / C Mixolydian #11",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2/9",
+            "3",
+            "♯4/♯11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F♯",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            6,
+            7,
+            9,
+            10
+          ],
+          "reason": "Full Lydian dominant stack: 1-9-3-#11-5-13-b7."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "lydian dominant",
+        "tritone sub"
+      ]
+    },
+    {
+      "id": "C7_b5",
+      "symbol": "C7b5",
+      "aliases": [
+        "C7♭5"
+      ],
+      "family": "altered dominant",
+      "quality": "dominant seventh flat five",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "3",
+        "♭5",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G♭",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        4,
+        6,
+        10
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_lydian_dominant",
+          "scaleName": "C Lydian Dominant / C Mixolydian #11",
+          "role": "primary if heard as #11/b5",
+          "formula": [
+            "1",
+            "2/9",
+            "3",
+            "♯4/♯11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F♯",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            6,
+            7,
+            9,
+            10
+          ],
+          "reason": "Dominant with raised 11/flat 5 color."
+        },
+        {
+          "scaleId": "C_altered",
+          "scaleName": "C Altered / C Super Locrian",
+          "role": "altered option",
+          "formula": [
+            "1",
+            "♭9",
+            "♯9",
+            "3",
+            "♭5/♯11",
+            "♯5/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "D♯",
+            "E",
+            "G♭",
+            "G♯",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            4,
+            6,
+            8,
+            10
+          ],
+          "reason": "Use when b9/#9/#5 tensions are also implied."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "altered"
+      ]
+    },
+    {
+      "id": "C9_b5",
+      "symbol": "C9b5",
+      "aliases": [
+        "C9♭5"
+      ],
+      "family": "lydian dominant",
+      "quality": "dominant ninth flat five",
+      "commonness": 3,
+      "formula": [
+        "1",
+        "3",
+        "♭5",
+        "♭7",
+        "9"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G♭",
+        "B♭",
+        "D"
+      ],
+      "semitones": [
+        0,
+        4,
+        6,
+        10,
+        2
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_lydian_dominant",
+          "scaleName": "C Lydian Dominant / C Mixolydian #11",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2/9",
+            "3",
+            "♯4/♯11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F♯",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            6,
+            7,
+            9,
+            10
+          ],
+          "reason": "Contains 9 and #11/b5 color."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "altered"
+      ]
+    },
+    {
+      "id": "C7_sharp5",
+      "symbol": "C7#5",
+      "aliases": [
+        "C7+",
+        "C7+5"
+      ],
+      "family": "augmented dominant",
+      "quality": "dominant seventh sharp five",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "3",
+        "♯5",
+        "♭7"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G♯",
+        "B♭"
+      ],
+      "semitones": [
+        0,
+        4,
+        8,
+        10
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_whole_tone",
+          "scaleName": "C Whole Tone",
+          "role": "primary augmented dominant",
+          "formula": [
+            "1",
+            "2/9",
+            "3",
+            "♯4/♯11",
+            "♯5/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F♯",
+            "G♯",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10
+          ],
+          "reason": "Direct 7#5/#11 whole-tone color."
+        },
+        {
+          "scaleId": "C_altered",
+          "scaleName": "C Altered / C Super Locrian",
+          "role": "altered option",
+          "formula": [
+            "1",
+            "♭9",
+            "♯9",
+            "3",
+            "♭5/♯11",
+            "♯5/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "D♯",
+            "E",
+            "G♭",
+            "G♯",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            4,
+            6,
+            8,
+            10
+          ],
+          "reason": "Use when b9/#9 tensions are included."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "augmented"
+      ]
+    },
+    {
+      "id": "C9_sharp5",
+      "symbol": "C9#5",
+      "aliases": [
+        "C9+",
+        "C9+5"
+      ],
+      "family": "augmented dominant",
+      "quality": "dominant ninth sharp five",
+      "commonness": 3,
+      "formula": [
+        "1",
+        "3",
+        "♯5",
+        "♭7",
+        "9"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G♯",
+        "B♭",
+        "D"
+      ],
+      "semitones": [
+        0,
+        4,
+        8,
+        10,
+        2
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_whole_tone",
+          "scaleName": "C Whole Tone",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2/9",
+            "3",
+            "♯4/♯11",
+            "♯5/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F♯",
+            "G♯",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10
+          ],
+          "reason": "Contains 9, 3, #5 and b7."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "augmented"
+      ]
+    },
+    {
+      "id": "C7_b9",
+      "symbol": "C7b9",
+      "aliases": [
+        "C7♭9"
+      ],
+      "family": "altered dominant",
+      "quality": "dominant seventh flat nine",
+      "commonness": 5,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "♭7",
+        "♭9"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B♭",
+        "D♭"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        10,
+        1
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_half_whole_diminished",
+          "scaleName": "C Half-Whole Diminished",
+          "role": "primary jazz dominant diminished",
+          "formula": [
+            "1",
+            "♭9",
+            "♯9",
+            "3",
+            "♯11/♭5",
+            "5",
+            "13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "D♯",
+            "E",
+            "F♯",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            4,
+            6,
+            7,
+            9,
+            10
+          ],
+          "reason": "Strong for 7b9 with natural 5/13 colors."
+        },
+        {
+          "scaleId": "C_phrygian_dominant",
+          "scaleName": "C Phrygian Dominant / Mixolydian b9 b13",
+          "role": "minor-key dominant option",
+          "formula": [
+            "1",
+            "♭9",
+            "3",
+            "4/11",
+            "5",
+            "♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "E",
+            "F",
+            "G",
+            "A♭",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            4,
+            5,
+            7,
+            8,
+            10
+          ],
+          "reason": "Dominant b9 b13 sound, especially resolving to minor."
+        },
+        {
+          "scaleId": "C_altered",
+          "scaleName": "C Altered / C Super Locrian",
+          "role": "more altered option",
+          "formula": [
+            "1",
+            "♭9",
+            "♯9",
+            "3",
+            "♭5/♯11",
+            "♯5/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "D♯",
+            "E",
+            "G♭",
+            "G♯",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            4,
+            6,
+            8,
+            10
+          ],
+          "reason": "Use when #9 or #5/b13 colors are also desired."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "altered",
+        "minor V"
+      ]
+    },
+    {
+      "id": "C7_sharp9",
+      "symbol": "C7#9",
+      "aliases": [
+        "C7♯9"
+      ],
+      "family": "altered dominant",
+      "quality": "dominant seventh sharp nine",
+      "commonness": 5,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "♭7",
+        "♯9"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B♭",
+        "D♯"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        10,
+        3
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_half_whole_diminished",
+          "scaleName": "C Half-Whole Diminished",
+          "role": "primary if natural 5/13",
+          "formula": [
+            "1",
+            "♭9",
+            "♯9",
+            "3",
+            "♯11/♭5",
+            "5",
+            "13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "D♯",
+            "E",
+            "F♯",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            4,
+            6,
+            7,
+            9,
+            10
+          ],
+          "reason": "Contains #9 with natural 5 and 13."
+        },
+        {
+          "scaleId": "C_altered",
+          "scaleName": "C Altered / C Super Locrian",
+          "role": "altered option",
+          "formula": [
+            "1",
+            "♭9",
+            "♯9",
+            "3",
+            "♭5/♯11",
+            "♯5/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "D♯",
+            "E",
+            "G♭",
+            "G♯",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            4,
+            6,
+            8,
+            10
+          ],
+          "reason": "Classic altered #9 dominant color."
+        },
+        {
+          "scaleId": "C_mixolydian_blues",
+          "scaleName": "C Mixolydian Blues",
+          "role": "funk/blues option",
+          "formula": [
+            "1",
+            "2/9",
+            "♭3 blue",
+            "3",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "E",
+            "F",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            7,
+            9,
+            10
+          ],
+          "reason": "Equivalent blue b3/#9 color against major 3."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "Hendrix",
+        "funk",
+        "altered"
+      ]
+    },
+    {
+      "id": "C7_b13",
+      "symbol": "C7b13",
+      "aliases": [
+        "C7♭13"
+      ],
+      "family": "altered dominant",
+      "quality": "dominant seventh flat thirteen",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "♭7",
+        "♭13"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B♭",
+        "A♭"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        10,
+        8
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_phrygian_dominant",
+          "scaleName": "C Phrygian Dominant / Mixolydian b9 b13",
+          "role": "primary with b9 color",
+          "formula": [
+            "1",
+            "♭9",
+            "3",
+            "4/11",
+            "5",
+            "♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "E",
+            "F",
+            "G",
+            "A♭",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            4,
+            5,
+            7,
+            8,
+            10
+          ],
+          "reason": "Dominant b9 b13 collection."
+        },
+        {
+          "scaleId": "C_altered",
+          "scaleName": "C Altered / C Super Locrian",
+          "role": "altered option",
+          "formula": [
+            "1",
+            "♭9",
+            "♯9",
+            "3",
+            "♭5/♯11",
+            "♯5/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "D♯",
+            "E",
+            "G♭",
+            "G♯",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            4,
+            6,
+            8,
+            10
+          ],
+          "reason": "Use when #9/b5 tension is also implied."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "altered",
+        "minor V"
+      ]
+    },
+    {
+      "id": "C9_b13",
+      "symbol": "C9b13",
+      "aliases": [
+        "C9♭13"
+      ],
+      "family": "altered dominant",
+      "quality": "dominant ninth flat thirteen",
+      "commonness": 3,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "♭7",
+        "9",
+        "♭13"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B♭",
+        "D",
+        "A♭"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        10,
+        2,
+        8
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_mixolydian",
+          "scaleName": "C Mixolydian",
+          "role": "inside but b13 conflicts",
+          "formula": [
+            "1",
+            "2/9",
+            "3",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            5,
+            7,
+            9,
+            10
+          ],
+          "reason": "Mixolydian has natural 13, so use with caution."
+        },
+        {
+          "scaleId": "C_altered",
+          "scaleName": "C Altered / C Super Locrian",
+          "role": "altered option",
+          "formula": [
+            "1",
+            "♭9",
+            "♯9",
+            "3",
+            "♭5/♯11",
+            "♯5/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "D♯",
+            "E",
+            "G♭",
+            "G♯",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            4,
+            6,
+            8,
+            10
+          ],
+          "reason": "If the 5th can be altered/omitted, altered scale supplies b13."
+        },
+        {
+          "scaleId": "C_whole_tone",
+          "scaleName": "C Whole Tone",
+          "role": "augmented option",
+          "formula": [
+            "1",
+            "2/9",
+            "3",
+            "♯4/♯11",
+            "♯5/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F♯",
+            "G♯",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10
+          ],
+          "reason": "Contains 9 and #5/b13 but omits natural 5."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "altered"
+      ],
+      "caveat": "A literal 9 plus b13 plus natural 5 is not contained in one of the most common seven-note dominant scales; voicing/context matters."
+    },
+    {
+      "id": "C7_b9_b13",
+      "symbol": "C7b9b13",
+      "aliases": [
+        "C7♭9♭13"
+      ],
+      "family": "altered dominant",
+      "quality": "dominant seventh flat nine flat thirteen",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "♭7",
+        "♭9",
+        "♭13"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B♭",
+        "D♭",
+        "A♭"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        10,
+        1,
+        8
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_phrygian_dominant",
+          "scaleName": "C Phrygian Dominant / Mixolydian b9 b13",
+          "role": "primary",
+          "formula": [
+            "1",
+            "♭9",
+            "3",
+            "4/11",
+            "5",
+            "♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "E",
+            "F",
+            "G",
+            "A♭",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            4,
+            5,
+            7,
+            8,
+            10
+          ],
+          "reason": "Direct b9 b13 dominant sound with natural 5."
+        },
+        {
+          "scaleId": "C_altered",
+          "scaleName": "C Altered / C Super Locrian",
+          "role": "altered option",
+          "formula": [
+            "1",
+            "♭9",
+            "♯9",
+            "3",
+            "♭5/♯11",
+            "♯5/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "D♯",
+            "E",
+            "G♭",
+            "G♯",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            4,
+            6,
+            8,
+            10
+          ],
+          "reason": "Use if the natural 5 is omitted or #5/b13 is the intended sound."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "altered",
+        "minor V"
+      ]
+    },
+    {
+      "id": "C7_sharp9_b13",
+      "symbol": "C7#9b13",
+      "aliases": [
+        "C7♯9♭13"
+      ],
+      "family": "altered dominant",
+      "quality": "dominant seventh sharp nine flat thirteen",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "3",
+        "♭7",
+        "♯9",
+        "♭13"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "B♭",
+        "D♯",
+        "A♭"
+      ],
+      "semitones": [
+        0,
+        4,
+        10,
+        3,
+        8
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_altered",
+          "scaleName": "C Altered / C Super Locrian",
+          "role": "primary",
+          "formula": [
+            "1",
+            "♭9",
+            "♯9",
+            "3",
+            "♭5/♯11",
+            "♯5/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "D♯",
+            "E",
+            "G♭",
+            "G♯",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            4,
+            6,
+            8,
+            10
+          ],
+          "reason": "Direct altered dominant sound."
+        },
+        {
+          "scaleId": "C_half_whole_diminished",
+          "scaleName": "C Half-Whole Diminished",
+          "role": "alternate if natural 13 replaces b13",
+          "formula": [
+            "1",
+            "♭9",
+            "♯9",
+            "3",
+            "♯11/♭5",
+            "5",
+            "13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "D♯",
+            "E",
+            "F♯",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            4,
+            6,
+            7,
+            9,
+            10
+          ],
+          "reason": "Use only if the 13 is natural rather than flat."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "altered"
+      ]
+    },
+    {
+      "id": "C7_b9_sharp5",
+      "symbol": "C7b9#5",
+      "aliases": [
+        "C7♭9♯5",
+        "C7b9+5"
+      ],
+      "family": "altered dominant",
+      "quality": "dominant seventh flat nine sharp five",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "3",
+        "♯5",
+        "♭7",
+        "♭9"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G♯",
+        "B♭",
+        "D♭"
+      ],
+      "semitones": [
+        0,
+        4,
+        8,
+        10,
+        1
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_altered",
+          "scaleName": "C Altered / C Super Locrian",
+          "role": "primary",
+          "formula": [
+            "1",
+            "♭9",
+            "♯9",
+            "3",
+            "♭5/♯11",
+            "♯5/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "D♯",
+            "E",
+            "G♭",
+            "G♯",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            4,
+            6,
+            8,
+            10
+          ],
+          "reason": "Altered scale supplies b9 and #5/b13."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "altered"
+      ]
+    },
+    {
+      "id": "C7_sharp9_sharp5",
+      "symbol": "C7#9#5",
+      "aliases": [
+        "C7♯9♯5",
+        "C7#9+5"
+      ],
+      "family": "altered dominant",
+      "quality": "dominant seventh sharp nine sharp five",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "3",
+        "♯5",
+        "♭7",
+        "♯9"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G♯",
+        "B♭",
+        "D♯"
+      ],
+      "semitones": [
+        0,
+        4,
+        8,
+        10,
+        3
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_altered",
+          "scaleName": "C Altered / C Super Locrian",
+          "role": "primary",
+          "formula": [
+            "1",
+            "♭9",
+            "♯9",
+            "3",
+            "♭5/♯11",
+            "♯5/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "D♯",
+            "E",
+            "G♭",
+            "G♯",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            4,
+            6,
+            8,
+            10
+          ],
+          "reason": "Classic altered dominant #9 #5 sound."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "altered"
+      ]
+    },
+    {
+      "id": "C7_b5_b9",
+      "symbol": "C7b5b9",
+      "aliases": [
+        "C7♭5♭9"
+      ],
+      "family": "altered dominant",
+      "quality": "dominant seventh flat five flat nine",
+      "commonness": 3,
+      "formula": [
+        "1",
+        "3",
+        "♭5",
+        "♭7",
+        "♭9"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G♭",
+        "B♭",
+        "D♭"
+      ],
+      "semitones": [
+        0,
+        4,
+        6,
+        10,
+        1
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_half_whole_diminished",
+          "scaleName": "C Half-Whole Diminished",
+          "role": "primary if natural 5 also acceptable",
+          "formula": [
+            "1",
+            "♭9",
+            "♯9",
+            "3",
+            "♯11/♭5",
+            "5",
+            "13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "D♯",
+            "E",
+            "F♯",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            4,
+            6,
+            7,
+            9,
+            10
+          ],
+          "reason": "Supplies b9, #9, #11/b5 and natural 5/13."
+        },
+        {
+          "scaleId": "C_altered",
+          "scaleName": "C Altered / C Super Locrian",
+          "role": "altered option",
+          "formula": [
+            "1",
+            "♭9",
+            "♯9",
+            "3",
+            "♭5/♯11",
+            "♯5/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "D♯",
+            "E",
+            "G♭",
+            "G♯",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            4,
+            6,
+            8,
+            10
+          ],
+          "reason": "Supplies b9 and b5 without natural 5."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "altered"
+      ]
+    },
+    {
+      "id": "C7_b5_sharp9",
+      "symbol": "C7b5#9",
+      "aliases": [
+        "C7♭5♯9"
+      ],
+      "family": "altered dominant",
+      "quality": "dominant seventh flat five sharp nine",
+      "commonness": 3,
+      "formula": [
+        "1",
+        "3",
+        "♭5",
+        "♭7",
+        "♯9"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G♭",
+        "B♭",
+        "D♯"
+      ],
+      "semitones": [
+        0,
+        4,
+        6,
+        10,
+        3
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_altered",
+          "scaleName": "C Altered / C Super Locrian",
+          "role": "primary",
+          "formula": [
+            "1",
+            "♭9",
+            "♯9",
+            "3",
+            "♭5/♯11",
+            "♯5/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "D♯",
+            "E",
+            "G♭",
+            "G♯",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            4,
+            6,
+            8,
+            10
+          ],
+          "reason": "Supplies #9 and b5/#11 altered dominant tones."
+        },
+        {
+          "scaleId": "C_half_whole_diminished",
+          "scaleName": "C Half-Whole Diminished",
+          "role": "alternate",
+          "formula": [
+            "1",
+            "♭9",
+            "♯9",
+            "3",
+            "♯11/♭5",
+            "5",
+            "13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "D♯",
+            "E",
+            "F♯",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            4,
+            6,
+            7,
+            9,
+            10
+          ],
+          "reason": "Also supplies #9 and #11/b5 with natural 5/13."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "altered"
+      ]
+    },
+    {
+      "id": "C13_b9",
+      "symbol": "C13b9",
+      "aliases": [
+        "C13♭9"
+      ],
+      "family": "dominant diminished",
+      "quality": "dominant thirteenth flat nine",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "♭7",
+        "♭9",
+        "13"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B♭",
+        "D♭",
+        "A"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        10,
+        1,
+        9
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_half_whole_diminished",
+          "scaleName": "C Half-Whole Diminished",
+          "role": "primary",
+          "formula": [
+            "1",
+            "♭9",
+            "♯9",
+            "3",
+            "♯11/♭5",
+            "5",
+            "13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "D♯",
+            "E",
+            "F♯",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            4,
+            6,
+            7,
+            9,
+            10
+          ],
+          "reason": "Directly contains b9, 13, natural 5 and b7."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "diminished"
+      ]
+    },
+    {
+      "id": "C13_sharp9",
+      "symbol": "C13#9",
+      "aliases": [
+        "C13♯9"
+      ],
+      "family": "dominant diminished",
+      "quality": "dominant thirteenth sharp nine",
+      "commonness": 3,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "♭7",
+        "♯9",
+        "13"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B♭",
+        "D♯",
+        "A"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        10,
+        3,
+        9
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_half_whole_diminished",
+          "scaleName": "C Half-Whole Diminished",
+          "role": "primary",
+          "formula": [
+            "1",
+            "♭9",
+            "♯9",
+            "3",
+            "♯11/♭5",
+            "5",
+            "13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "D♯",
+            "E",
+            "F♯",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            4,
+            6,
+            7,
+            9,
+            10
+          ],
+          "reason": "Contains #9, 13, natural 5 and b7."
+        },
+        {
+          "scaleId": "C_mixolydian_blues",
+          "scaleName": "C Mixolydian Blues",
+          "role": "funk/blues option",
+          "formula": [
+            "1",
+            "2/9",
+            "♭3 blue",
+            "3",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "E",
+            "F",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            7,
+            9,
+            10
+          ],
+          "reason": "Treat #9 as blues b3 over dominant 13."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "funk",
+        "diminished"
+      ]
+    },
+    {
+      "id": "C13_b9_11",
+      "symbol": "C13b9#11",
+      "aliases": [
+        "C13♭9♯11"
+      ],
+      "family": "dominant diminished",
+      "quality": "dominant thirteenth flat nine sharp eleven",
+      "commonness": 3,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "♭7",
+        "♭9",
+        "♯11",
+        "13"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "B♭",
+        "D♭",
+        "F♯",
+        "A"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        10,
+        1,
+        6,
+        9
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_half_whole_diminished",
+          "scaleName": "C Half-Whole Diminished",
+          "role": "primary",
+          "formula": [
+            "1",
+            "♭9",
+            "♯9",
+            "3",
+            "♯11/♭5",
+            "5",
+            "13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "D♯",
+            "E",
+            "F♯",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            4,
+            6,
+            7,
+            9,
+            10
+          ],
+          "reason": "Full diminished-dominant color: b9, #11, natural 5, 13."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "diminished",
+        "advanced"
+      ]
+    },
+    {
+      "id": "C7_sharp11_sharp5",
+      "symbol": "C7#11#5",
+      "aliases": [
+        "C7♯11♯5"
+      ],
+      "family": "augmented dominant",
+      "quality": "dominant seventh sharp eleven sharp five",
+      "commonness": 3,
+      "formula": [
+        "1",
+        "3",
+        "♯5",
+        "♭7",
+        "♯11"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G♯",
+        "B♭",
+        "F♯"
+      ],
+      "semitones": [
+        0,
+        4,
+        8,
+        10,
+        6
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_whole_tone",
+          "scaleName": "C Whole Tone",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2/9",
+            "3",
+            "♯4/♯11",
+            "♯5/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F♯",
+            "G♯",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10
+          ],
+          "reason": "Whole-tone dominant supplies 3, #11, #5 and b7."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "whole tone"
+      ]
+    },
+    {
+      "id": "C9_sharp11_sharp5",
+      "symbol": "C9#11#5",
+      "aliases": [
+        "C9♯11♯5"
+      ],
+      "family": "augmented dominant",
+      "quality": "dominant ninth sharp eleven sharp five",
+      "commonness": 3,
+      "formula": [
+        "1",
+        "3",
+        "♯5",
+        "♭7",
+        "9",
+        "♯11"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G♯",
+        "B♭",
+        "D",
+        "F♯"
+      ],
+      "semitones": [
+        0,
+        4,
+        8,
+        10,
+        2,
+        6
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_whole_tone",
+          "scaleName": "C Whole Tone",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2/9",
+            "3",
+            "♯4/♯11",
+            "♯5/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F♯",
+            "G♯",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10
+          ],
+          "reason": "Full whole-tone dominant sound."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "whole tone"
+      ]
+    },
+    {
+      "id": "C7alt",
+      "symbol": "C7alt",
+      "aliases": [
+        "C7 altered",
+        "Calt"
+      ],
+      "family": "altered dominant",
+      "quality": "altered dominant",
+      "commonness": 5,
+      "formula": [
+        "1",
+        "3",
+        "♭7",
+        "altered 5ths and 9ths"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "B♭",
+        "D♭",
+        "D♯",
+        "G♭",
+        "G♯"
+      ],
+      "semitones": [
+        0,
+        4,
+        10,
+        1,
+        3,
+        6,
+        8
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_altered",
+          "scaleName": "C Altered / C Super Locrian",
+          "role": "primary",
+          "formula": [
+            "1",
+            "♭9",
+            "♯9",
+            "3",
+            "♭5/♯11",
+            "♯5/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D♭",
+            "D♯",
+            "E",
+            "G♭",
+            "G♯",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            1,
+            3,
+            4,
+            6,
+            8,
+            10
+          ],
+          "reason": "Contains all standard altered dominant tensions: b9, #9, b5/#11, #5/b13."
+        }
+      ],
+      "tags": [
+        "dominant",
+        "altered",
+        "tension"
+      ]
+    },
+    {
+      "id": "Caug",
+      "symbol": "Caug",
+      "aliases": [
+        "C+",
+        "C#5"
+      ],
+      "family": "augmented",
+      "quality": "augmented triad",
+      "commonness": 3,
+      "formula": [
+        "1",
+        "3",
+        "♯5"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G♯"
+      ],
+      "semitones": [
+        0,
+        4,
+        8
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_whole_tone",
+          "scaleName": "C Whole Tone",
+          "role": "primary dominant/augmented",
+          "formula": [
+            "1",
+            "2/9",
+            "3",
+            "♯4/♯11",
+            "♯5/♭13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F♯",
+            "G♯",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10
+          ],
+          "reason": "Common augmented collection."
+        },
+        {
+          "scaleId": "C_lydian_augmented",
+          "scaleName": "C Lydian Augmented",
+          "role": "major seventh option",
+          "formula": [
+            "1",
+            "2",
+            "3",
+            "♯4/♯11",
+            "♯5",
+            "6",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F♯",
+            "G♯",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            6,
+            8,
+            9,
+            11
+          ],
+          "reason": "Use if a major 7 / #11 color is desired."
+        }
+      ],
+      "tags": [
+        "augmented"
+      ]
+    },
+    {
+      "id": "Cdim7",
+      "symbol": "Cdim7",
+      "aliases": [
+        "Co7",
+        "C°7"
+      ],
+      "family": "diminished",
+      "quality": "diminished seventh",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "♭3",
+        "♭5",
+        "𝄫7"
+      ],
+      "notes": [
+        "C",
+        "E♭",
+        "G♭",
+        "A"
+      ],
+      "semitones": [
+        0,
+        3,
+        6,
+        9
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_whole_half_diminished",
+          "scaleName": "C Whole-Half Diminished",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2/9",
+            "♭3",
+            "4/11",
+            "♭5",
+            "♭13",
+            "13/𝄫7",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "F",
+            "G♭",
+            "A♭",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            5,
+            6,
+            8,
+            9,
+            11
+          ],
+          "reason": "Direct diminished seventh chord-scale."
+        }
+      ],
+      "tags": [
+        "diminished",
+        "passing chord"
+      ]
+    },
+    {
+      "id": "CdimMaj7",
+      "symbol": "CdimMaj7",
+      "aliases": [
+        "C°maj7"
+      ],
+      "family": "diminished",
+      "quality": "diminished major seventh",
+      "commonness": 1,
+      "formula": [
+        "1",
+        "♭3",
+        "♭5",
+        "7"
+      ],
+      "notes": [
+        "C",
+        "E♭",
+        "G♭",
+        "B"
+      ],
+      "semitones": [
+        0,
+        3,
+        6,
+        11
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_whole_half_diminished",
+          "scaleName": "C Whole-Half Diminished",
+          "role": "closest common source",
+          "formula": [
+            "1",
+            "2/9",
+            "♭3",
+            "4/11",
+            "♭5",
+            "♭13",
+            "13/𝄫7",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "F",
+            "G♭",
+            "A♭",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            5,
+            6,
+            8,
+            9,
+            11
+          ],
+          "reason": "Whole-half diminished contains the diminished triad and major 7 color."
+        }
+      ],
+      "tags": [
+        "rare",
+        "advanced"
+      ],
+      "caveat": "Rare symbol; included for completeness."
+    },
+    {
+      "id": "Cadd9",
+      "symbol": "Cadd9",
+      "aliases": [],
+      "family": "major",
+      "quality": "major add nine",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "3",
+        "5",
+        "9"
+      ],
+      "notes": [
+        "C",
+        "E",
+        "G",
+        "D"
+      ],
+      "semitones": [
+        0,
+        4,
+        7,
+        2
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_major_pentatonic",
+          "scaleName": "C Major Pentatonic",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2",
+            "3",
+            "5",
+            "6"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "G",
+            "A"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            7,
+            9
+          ],
+          "reason": "Directly contains 1-2-3-5."
+        },
+        {
+          "scaleId": "C_ionian",
+          "scaleName": "C Ionian / C major",
+          "role": "inside/basic",
+          "formula": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            5,
+            7,
+            9,
+            11
+          ],
+          "reason": "Plain major add9 sound."
+        }
+      ],
+      "tags": [
+        "add chord",
+        "pop",
+        "funk"
+      ]
+    },
+    {
+      "id": "Cmadd9",
+      "symbol": "Cmadd9",
+      "aliases": [
+        "C- add9"
+      ],
+      "family": "minor",
+      "quality": "minor add nine",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "♭3",
+        "5",
+        "9"
+      ],
+      "notes": [
+        "C",
+        "E♭",
+        "G",
+        "D"
+      ],
+      "semitones": [
+        0,
+        3,
+        7,
+        2
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_dorian",
+          "scaleName": "C Dorian",
+          "role": "primary",
+          "formula": [
+            "1",
+            "2",
+            "♭3",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "F",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            5,
+            7,
+            9,
+            10
+          ],
+          "reason": "Minor add9 with natural 6 available."
+        },
+        {
+          "scaleId": "C_melodic_minor",
+          "scaleName": "C Melodic Minor / jazz minor",
+          "role": "tonic minor option",
+          "formula": [
+            "1",
+            "2",
+            "♭3",
+            "4/11",
+            "5",
+            "6/13",
+            "7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E♭",
+            "F",
+            "G",
+            "A",
+            "B"
+          ],
+          "semitones": [
+            0,
+            2,
+            3,
+            5,
+            7,
+            9,
+            11
+          ],
+          "reason": "Minor add9 with major 7/natural 6 color."
+        }
+      ],
+      "tags": [
+        "add chord",
+        "minor"
+      ]
+    },
+    {
+      "id": "Csus2",
+      "symbol": "Csus2",
+      "aliases": [],
+      "family": "suspended",
+      "quality": "suspended second",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "2",
+        "5"
+      ],
+      "notes": [
+        "C",
+        "D",
+        "G"
+      ],
+      "semitones": [
+        0,
+        2,
+        7
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_major_pentatonic",
+          "scaleName": "C Major Pentatonic",
+          "role": "primary bright/simple",
+          "formula": [
+            "1",
+            "2",
+            "3",
+            "5",
+            "6"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "E",
+            "G",
+            "A"
+          ],
+          "semitones": [
+            0,
+            2,
+            4,
+            7,
+            9
+          ],
+          "reason": "Open sus2 major-pentatonic sound."
+        },
+        {
+          "scaleId": "C_sus_pentatonic",
+          "scaleName": "C Sus Pentatonic",
+          "role": "dominant/funk option",
+          "formula": [
+            "1",
+            "2/9",
+            "4/11",
+            "5",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "F",
+            "G",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            5,
+            7,
+            10
+          ],
+          "reason": "Adds 4 and b7 for funk sus color."
+        }
+      ],
+      "tags": [
+        "sus2",
+        "open voicing"
+      ]
+    },
+    {
+      "id": "Csus4",
+      "symbol": "Csus4",
+      "aliases": [],
+      "family": "suspended",
+      "quality": "suspended fourth",
+      "commonness": 4,
+      "formula": [
+        "1",
+        "4",
+        "5"
+      ],
+      "notes": [
+        "C",
+        "F",
+        "G"
+      ],
+      "semitones": [
+        0,
+        5,
+        7
+      ],
+      "scaleChoices": [
+        {
+          "scaleId": "C_sus_pentatonic",
+          "scaleName": "C Sus Pentatonic",
+          "role": "primary funk/modal",
+          "formula": [
+            "1",
+            "2/9",
+            "4/11",
+            "5",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "F",
+            "G",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            5,
+            7,
+            10
+          ],
+          "reason": "Compact sus vocabulary."
+        },
+        {
+          "scaleId": "C_dominant_sus",
+          "scaleName": "C Dominant Sus / Mixolydian Sus",
+          "role": "dominant option",
+          "formula": [
+            "1",
+            "2/9",
+            "4/11",
+            "5",
+            "6/13",
+            "♭7"
+          ],
+          "notes": [
+            "C",
+            "D",
+            "F",
+            "G",
+            "A",
+            "B♭"
+          ],
+          "semitones": [
+            0,
+            2,
+            5,
+            7,
+            9,
+            10
+          ],
+          "reason": "Adds 9, 13, b7."
+        }
+      ],
+      "tags": [
+        "sus4",
+        "quartal"
+      ]
+    }
+  ]
+}
