@@ -30,6 +30,7 @@
       }
 
       button,
+      a,
       select {
         font: inherit;
       }
@@ -52,7 +53,7 @@
 
       .controls {
         display: grid;
-        grid-template-columns: minmax(5.5rem, 7rem) minmax(8rem, 13rem);
+        grid-template-columns: minmax(5.5rem, 7rem) minmax(8rem, 13rem) auto;
         gap: 0.35rem;
       }
 
@@ -100,7 +101,8 @@
       }
 
       .root-select,
-      .family-filter {
+      .family-filter,
+      .download-link {
         width: 100%;
         min-height: 2.5rem;
         border: 1px solid #d6dce4;
@@ -114,6 +116,15 @@
       .root-select,
       .family-filter {
         padding: 0 0.55rem;
+      }
+
+      .download-link {
+        display: inline-grid;
+        place-items: center;
+        min-width: 7.2rem;
+        padding: 0 0.7rem;
+        text-decoration: none;
+        white-space: nowrap;
       }
 
       .chord-list {
@@ -319,6 +330,7 @@
         <div class="controls">
           <select class="root-select" id="rootSelect" aria-label="Root"></select>
           <select class="family-filter" id="familyFilter" aria-label="Family"></select>
+          <a class="download-link" href="chords-voicings-scales-reference.md" download>Download MD</a>
         </div>
         <div class="legend" aria-label="Color schema">
           <span class="legend-root">Root</span>
