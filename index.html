@@ -53,7 +53,7 @@
 
       .controls {
         display: grid;
-        grid-template-columns: minmax(5.5rem, 7rem) minmax(8rem, 13rem) auto;
+        grid-template-columns: minmax(5.5rem, 7rem) minmax(8rem, 13rem);
         gap: 0.35rem;
       }
 
@@ -130,6 +130,12 @@
       .chord-list {
         display: grid;
         gap: 0.58rem;
+      }
+
+      .download-footer {
+        display: flex;
+        justify-content: center;
+        padding: 1.1rem 0 0.5rem;
       }
 
       .chord-card {
@@ -330,7 +336,6 @@
         <div class="controls">
           <select class="root-select" id="rootSelect" aria-label="Root"></select>
           <select class="family-filter" id="familyFilter" aria-label="Family"></select>
-          <a class="download-link" href="chords-voicings-scales-reference.md" download>Download MD</a>
         </div>
         <div class="legend" aria-label="Color schema">
           <span class="legend-root">Root</span>
@@ -343,6 +348,9 @@
         </div>
       </header>
       <section class="chord-list" id="chordList" aria-live="polite"></section>
+      <footer class="download-footer">
+        <a class="download-link" href="chords-voicings-scales-reference.md" download>Download MD</a>
+      </footer>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/tone@14.7.77/build/Tone.js"></script>
     <script type="module" src="script.js"></script>
