@@ -5067,6 +5067,129 @@ Non-root scale association derived by the app:
 - Semitones from C: [3, 5, 7, 8, 10, 0, 2]
 - Relationship explanation: D# Ionian / D# major is not the same pitch collection as C Dominant Sus / Mixolydian Sus, but it fits Csus4 because it contains C, F, G.
 
+## Pentatonic Rows Derived By The App
+
+The app now adds optional pentatonic rows below each scale row. A pentatonic row is shown only when the pentatonic scale is a subset of the parent scale and shares at least three chord tones with the chord. Parent scales that are already pentatonic do not receive a duplicate pentatonic row.
+
+- Root/selected-scale pentatonic rows shown across all scale choices: 75
+- Non-root-scale pentatonic rows shown across all scale choices: 76
+- Total optional pentatonic rows shown across all scale choices: 151
+
+| Chord | Selected scale | Pentatonic under selected scale | Non-root scale | Pentatonic under non-root scale |
+| --- | --- | --- | --- | --- |
+| Cmaj7 | C Lydian | C Major Pentatonic | G Ionian / G major | G Major Pentatonic |
+| Cmaj7 | C Ionian / C major | C Major Pentatonic | D Dorian | D Sus Pentatonic |
+| Cmaj9 | C Lydian | C Major Pentatonic | G Ionian / G major | G Major Pentatonic |
+| Cmaj9 | C Ionian / C major | C Major Pentatonic | D Dorian | D Minor Pentatonic |
+| Cmaj13 | C Lydian | C Major Pentatonic | G Ionian / G major | G Major Pentatonic |
+| Cmaj13 | C Ionian / C major | C Major Pentatonic | D Dorian | D Minor Pentatonic |
+| C6 | C Major Pentatonic | None | A Minor Pentatonic | None |
+| C6 | C Ionian / C major | C Major Pentatonic | D Dorian | D Minor Pentatonic |
+| C6/9 | C Major Pentatonic | None | A Minor Pentatonic | None |
+| C6/9 | C Lydian | C Major Pentatonic | G Ionian / G major | G Major Pentatonic |
+| Cmaj7#11 | C Lydian | C Major Pentatonic | G Ionian / G major | G Major Pentatonic |
+| Cmaj9#11 | C Lydian | C Major Pentatonic | G Ionian / G major | G Major Pentatonic |
+| Cmaj13#11 | C Lydian | C Major Pentatonic | G Ionian / G major | G Major Pentatonic |
+| Cmaj7#5 | C Lydian Augmented | E Dominant Pentatonic | D Lydian Dominant / D Mixolydian #11 | E Dominant Pentatonic |
+| Cmaj7#5 | C Augmented Scale | None | E Augmented Scale | None |
+| Cmaj9#5 | C Lydian Augmented | D Major Pentatonic | D Lydian Dominant / D Mixolydian #11 | D Dominant Pentatonic |
+| Cmaj7#5#11 | C Lydian Augmented | D Major Pentatonic | D Lydian Dominant / D Mixolydian #11 | D Dominant Pentatonic |
+| Cm7 | C Dorian | C Minor Pentatonic | A# Ionian / A# major | A# Major Pentatonic |
+| Cm7 | C Aeolian / natural minor | C Minor Pentatonic | D# Ionian / D# major | D# Major Pentatonic |
+| Cm7 | C Minor Pentatonic | None | D# Major Pentatonic | None |
+| Cm9 | C Dorian | C Minor Pentatonic | A# Ionian / A# major | A# Major Pentatonic |
+| Cm9 | C Melodic Minor / jazz minor | D Minor Pentatonic | D# Ionian / D# major | D# Major Pentatonic |
+| Cm11 | C Dorian | C Minor Pentatonic | A# Ionian / A# major | A# Major Pentatonic |
+| Cm11 | C Minor Pentatonic | None | D# Ionian / D# major | D# Major Pentatonic |
+| Cm13 | C Dorian | C Minor Pentatonic | A# Ionian / A# major | A# Major Pentatonic |
+| Cm6 | C Melodic Minor / jazz minor | D Minor Pentatonic | D# Lydian Augmented | D Minor Pentatonic |
+| Cm6 | C Dorian | C Minor Pentatonic | A# Ionian / A# major | D# Major Pentatonic |
+| Cm6/9 | C Melodic Minor / jazz minor | D Minor Pentatonic | D# Lydian Augmented | D Minor Pentatonic |
+| Cm6/9 | C Dorian | C Minor Pentatonic | A# Ionian / A# major | A# Major Pentatonic |
+| Cm(maj7) | C Melodic Minor / jazz minor | F Dominant Pentatonic | D# Lydian Augmented | F Dominant Pentatonic |
+| Cm(maj7) | C Harmonic Minor | None | G Phrygian Dominant / Mixolydian b9 b13 | None |
+| Cm(maj9) | C Melodic Minor / jazz minor | D Minor Pentatonic | D# Lydian Augmented | D Minor Pentatonic |
+| Cm(maj13) | C Melodic Minor / jazz minor | D Minor Pentatonic | D# Lydian Augmented | D Minor Pentatonic |
+| Cm7b13 | C Aeolian / natural minor | C Minor Pentatonic | D# Ionian / D# major | D# Major Pentatonic |
+| Cm7b13 | C Phrygian | C Minor Pentatonic | G# Ionian / G# major | G# Major Pentatonic |
+| Cm7b9 | C Phrygian | C Minor Pentatonic | G# Ionian / G# major | G# Major Pentatonic |
+| Cm11b9 | C Phrygian | C Minor Pentatonic | G# Ionian / G# major | G# Major Pentatonic |
+| Cm7b5 | C Locrian Natural 2 | G# Dominant Pentatonic | D Altered / D Super Locrian | F Minor Pentatonic |
+| Cm7b5 | C Locrian | G# Dominant Pentatonic | C# Ionian / C# major | G# Major Pentatonic |
+| Cm9b5 | C Locrian Natural 2 | G# Dominant Pentatonic | D Altered / D Super Locrian | F Minor Pentatonic |
+| Cm11b5 | C Locrian Natural 2 | F Minor Pentatonic | D Altered / D Super Locrian | F Minor Pentatonic |
+| C7 | C Mixolydian | C Dominant Pentatonic | F Ionian / F major | C Major Pentatonic |
+| C7 | C Bebop Dominant | C Dominant Pentatonic | G Mixolydian Blues | G Minor Pentatonic |
+| C7 | C Mixolydian Blues | C Dominant Pentatonic | F Bebop Dominant | F Sus Pentatonic |
+| C9 | C Mixolydian | C Dominant Pentatonic | F Ionian / F major | F Major Pentatonic |
+| C9 | C Dominant Pentatonic | None | F Ionian / F major | F Major Pentatonic |
+| C11 | C Mixolydian | C Dominant Pentatonic | F Ionian / F major | F Major Pentatonic |
+| C11 | C Dominant Sus / Mixolydian Sus | C Sus Pentatonic | F Ionian / F major | F Major Pentatonic |
+| C13 | C Mixolydian | C Dominant Pentatonic | F Ionian / F major | F Major Pentatonic |
+| C13 | C Bebop Dominant | C Dominant Pentatonic | G Mixolydian Blues | G Major Pentatonic |
+| C13 | C Mixolydian Blues | C Dominant Pentatonic | F Bebop Dominant | F Dominant Pentatonic |
+| C7sus4 | C Dominant Sus / Mixolydian Sus | C Sus Pentatonic | D# Ionian / D# major | D# Major Pentatonic |
+| C7sus4 | C Sus Pentatonic | None | G Minor Pentatonic | None |
+| C7sus4 | C Minor Pentatonic | None | D# Major Pentatonic | None |
+| C9sus4 | C Dominant Sus / Mixolydian Sus | C Sus Pentatonic | D# Ionian / D# major | D# Major Pentatonic |
+| C9sus4 | C Sus Pentatonic | None | G Minor Pentatonic | None |
+| C13sus4 | C Dominant Sus / Mixolydian Sus | C Sus Pentatonic | F Ionian / F major | F Major Pentatonic |
+| C13sus4 | C Dorian | C Minor Pentatonic | A# Ionian / A# major | A# Major Pentatonic |
+| C7sus2 | C Sus Pentatonic | None | G Minor Pentatonic | None |
+| C7sus2 | C Dominant Sus / Mixolydian Sus | C Sus Pentatonic | D# Ionian / D# major | D# Major Pentatonic |
+| C7sus4b9 | C Phrygian | C Minor Pentatonic | G# Ionian / G# major | G# Major Pentatonic |
+| C7sus4b9 | C Phrygian Dominant / Mixolydian b9 b13 | None | F Harmonic Minor | None |
+| C7#11 | C Lydian Dominant / C Mixolydian #11 | C Dominant Pentatonic | E Locrian Natural 2 | A Minor Pentatonic |
+| C7#11 | C Whole Tone | None | C# Whole-Half Diminished | None |
+| C9#11 | C Lydian Dominant / C Mixolydian #11 | C Dominant Pentatonic | E Locrian Natural 2 | A Minor Pentatonic |
+| C13#11 | C Lydian Dominant / C Mixolydian #11 | C Dominant Pentatonic | E Locrian Natural 2 | A Minor Pentatonic |
+| C7b5 | C Lydian Dominant / C Mixolydian #11 | C Dominant Pentatonic | E Locrian Natural 2 | C Dominant Pentatonic |
+| C7b5 | C Altered / C Super Locrian | G# Dominant Pentatonic | C# Melodic Minor / jazz minor | G# Dominant Pentatonic |
+| C9b5 | C Lydian Dominant / C Mixolydian #11 | C Dominant Pentatonic | E Locrian Natural 2 | A Minor Pentatonic |
+| C7#5 | C Whole Tone | None | D Whole Tone | None |
+| C7#5 | C Altered / C Super Locrian | G# Dominant Pentatonic | C# Melodic Minor / jazz minor | G# Dominant Pentatonic |
+| C9#5 | C Whole Tone | None | D Whole Tone | None |
+| C7b9 | C Half-Whole Diminished | None | C# Whole-Half Diminished | None |
+| C7b9 | C Phrygian Dominant / Mixolydian b9 b13 | None | F Harmonic Minor | None |
+| C7b9 | C Altered / C Super Locrian | F# Dominant Pentatonic | C# Whole-Half Diminished | None |
+| C7#9 | C Half-Whole Diminished | None | C# Whole-Half Diminished | None |
+| C7#9 | C Altered / C Super Locrian | G# Dominant Pentatonic | C# Whole-Half Diminished | None |
+| C7#9 | C Mixolydian Blues | C Dominant Pentatonic | F Bebop Dominant | F Dominant Pentatonic |
+| C7b13 | C Phrygian Dominant / Mixolydian b9 b13 | None | F Harmonic Minor | None |
+| C7b13 | C Altered / C Super Locrian | G# Dominant Pentatonic | D Locrian Natural 2 | G Minor Pentatonic |
+| C9b13 | C Mixolydian | C Dominant Pentatonic | D Locrian Natural 2 | G Minor Pentatonic |
+| C9b13 | C Altered / C Super Locrian | G# Dominant Pentatonic | D Locrian Natural 2 | G Minor Pentatonic |
+| C9b13 | C Whole Tone | None | D Locrian Natural 2 | G Minor Pentatonic |
+| C7b9b13 | C Phrygian Dominant / Mixolydian b9 b13 | None | F Harmonic Minor | None |
+| C7b9b13 | C Altered / C Super Locrian | G# Dominant Pentatonic | F Harmonic Minor | None |
+| C7#9b13 | C Altered / C Super Locrian | G# Dominant Pentatonic | C# Melodic Minor / jazz minor | G# Dominant Pentatonic |
+| C7#9b13 | C Half-Whole Diminished | None | C# Melodic Minor / jazz minor | G# Dominant Pentatonic |
+| C7b9#5 | C Altered / C Super Locrian | G# Dominant Pentatonic | C# Melodic Minor / jazz minor | D# Minor Pentatonic |
+| C7#9#5 | C Altered / C Super Locrian | G# Dominant Pentatonic | C# Melodic Minor / jazz minor | G# Dominant Pentatonic |
+| C7b5b9 | C Half-Whole Diminished | None | C# Whole-Half Diminished | None |
+| C7b5b9 | C Altered / C Super Locrian | G# Dominant Pentatonic | C# Melodic Minor / jazz minor | D# Minor Pentatonic |
+| C7b5#9 | C Altered / C Super Locrian | G# Dominant Pentatonic | C# Melodic Minor / jazz minor | G# Dominant Pentatonic |
+| C7b5#9 | C Half-Whole Diminished | None | C# Whole-Half Diminished | None |
+| C13b9 | C Half-Whole Diminished | None | C# Whole-Half Diminished | None |
+| C13#9 | C Half-Whole Diminished | None | C# Whole-Half Diminished | None |
+| C13#9 | C Mixolydian Blues | C Dominant Pentatonic | F Bebop Dominant | F Dominant Pentatonic |
+| C13b9#11 | C Half-Whole Diminished | None | C# Whole-Half Diminished | None |
+| C7#11#5 | C Whole Tone | None | D Whole Tone | None |
+| C9#11#5 | C Whole Tone | None | D Whole Tone | None |
+| C7alt | C Altered / C Super Locrian | G# Dominant Pentatonic | C# Melodic Minor / jazz minor | D# Minor Pentatonic |
+| Caug | C Whole Tone | None | D Whole Tone | None |
+| Caug | C Lydian Augmented | None | D Lydian Dominant / D Mixolydian #11 | None |
+| Cdim7 | C Whole-Half Diminished | None | D Half-Whole Diminished | None |
+| CdimMaj7 | C Whole-Half Diminished | None | D Half-Whole Diminished | None |
+| Cadd9 | C Major Pentatonic | None | A Minor Pentatonic | None |
+| Cadd9 | C Ionian / C major | C Major Pentatonic | D Dorian | D Minor Pentatonic |
+| Cmadd9 | C Dorian | C Minor Pentatonic | A# Ionian / A# major | A# Major Pentatonic |
+| Cmadd9 | C Melodic Minor / jazz minor | D Minor Pentatonic | D# Lydian Augmented | D Minor Pentatonic |
+| Csus2 | C Major Pentatonic | None | A Minor Pentatonic | None |
+| Csus2 | C Sus Pentatonic | None | G Minor Pentatonic | None |
+| Csus4 | C Sus Pentatonic | None | G Minor Pentatonic | None |
+| Csus4 | C Dominant Sus / Mixolydian Sus | C Sus Pentatonic | D# Ionian / D# major | D# Major Pentatonic |
+
 ## Machine-Readable Caveat
 
 This Markdown preserves the user-facing music vocabulary and app-derived relationships. If exact runtime behavior is needed, use the app source files alongside this document because the app also includes UI rendering and Web Audio playback behavior.

@@ -215,7 +215,7 @@
 
       .graphs {
         display: grid;
-        grid-template-rows: repeat(4, minmax(5.8rem, auto));
+        grid-auto-rows: minmax(5.8rem, auto);
         gap: 0.34rem;
         min-width: 0;
       }
@@ -242,6 +242,10 @@
       .play-button.is-playing {
         border-color: #2f7dd3;
         background: #eef6ff;
+      }
+
+      .play-button.is-hidden {
+        display: none;
       }
 
       .play-label {

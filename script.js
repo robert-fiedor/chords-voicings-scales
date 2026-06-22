@@ -17,6 +17,7 @@ const ROLE_COLORS = {
 
 let sourceData = null;
 let scaleCorpus = [];
+let pentatonicCorpus = [];
 let renderedCards = [];
 let sampler = null;
 let reverb = null;
@@ -31,6 +32,7 @@ init();
 async function init() {
   sourceData = await fetch("data/c_root_jazz_funk_chord_scales.json").then((response) => response.json());
   scaleCorpus = buildScaleCorpus(sourceData.scaleLibrary);
+  pentatonicCorpus = scaleCorpus.filter((scale) => scale.family === "pentatonic");
   buildRootSelect();
   buildFamilyFilter(sourceData.chords);
   render();
@@ -100,7 +102,9 @@ function createChordCard(chord) {
   const chordButton = createPlayButton("Chord");
   const voicingButton = createPlayButton("Voicing");
   const scaleButton = createPlayButton("Scale");
+  const scalePentatonicButton = createPlayButton("Pentatonic");
   const relativeButton = createPlayButton("Non-root");
+  const relativePentatonicButton = createPlayButton("Non-root pentatonic");
   const relation = document.createElement("div");
 
   card.className = "chord-card";
@@ -133,12 +137,16 @@ function createChordCard(chord) {
     chordButton,
     voicingButton,
     scaleButton,
+    scalePentatonicButton,
     relativeButton,
+    relativePentatonicButton,
     relation,
     chordChart: null,
     voicingChart: null,
     scaleChart: null,
+    scalePentatonicChart: null,
     relativeChart: null,
+    relativePentatonicChart: null,
   };
 
   scaleSelect.addEventListener("change", () => {
@@ -147,7 +155,14 @@ function createChordCard(chord) {
   });
 
   meta.append(symbol, quality, commonness, scaleSelect, relation);
-  graphs.append(chordButton.button, voicingButton.button, scaleButton.button, relativeButton.button);
+  graphs.append(
+    chordButton.button,
+    voicingButton.button,
+    scaleButton.button,
+    scalePentatonicButton.button,
+    relativeButton.button,
+    relativePentatonicButton.button,
+  );
   card.append(meta, graphs);
   renderedCards.push(cardState);
   return { card, cardState };
@@ -172,7 +187,9 @@ function setupCardPlayback(cardState) {
   setupChordButton(cardState);
   setupVoicingButton(cardState);
   setupScaleButton(cardState);
+  setupScalePentatonicButton(cardState);
   setupRelativeButton(cardState);
+  setupRelativePentatonicButton(cardState);
 }
 
 function setupChordButton(cardState) {
@@ -218,9 +235,23 @@ function setupScaleButton(cardState) {
   });
 }
 
+function setupScalePentatonicButton(cardState) {
+  cardState.scalePentatonicButton.button.addEventListener("click", () => {
+    if (!cardState.scalePentatonicNotes?.length) return;
+    playScale(cardState.scalePentatonicNotes, cardState.scalePentatonicButton.button, cardState.scalePentatonicChart);
+  });
+}
+
 function setupRelativeButton(cardState) {
   cardState.relativeButton.button.addEventListener("click", () => {
     playScale(cardState.relativeNotes, cardState.relativeButton.button, cardState.relativeChart);
+  });
+}
+
+function setupRelativePentatonicButton(cardState) {
+  cardState.relativePentatonicButton.button.addEventListener("click", () => {
+    if (!cardState.relativePentatonicNotes?.length) return;
+    playScale(cardState.relativePentatonicNotes, cardState.relativePentatonicButton.button, cardState.relativePentatonicChart);
   });
 }
 
@@ -230,6 +261,7 @@ function refreshScale(cardState) {
   const displayNotes = scaleNotes.map((note) => note.display);
   const rootNotes = displayNotes.filter((note) => noteSemitone(note) === scale.rootSemitone);
   const nonRoot = getNonRootScale(cardState.chord, scale);
+  const scalePentatonic = getPentatonicScale(cardState.chord, scale);
 
   cardState.scale = scale;
   cardState.scaleNotes = scaleNotes.map((note) => note.play);
@@ -237,11 +269,13 @@ function refreshScale(cardState) {
   cardState.scaleButton.button.setAttribute("aria-label", `Play ${scale.scaleName}`);
   cardState.scaleButton.keyboard.replaceChildren();
   cardState.scaleChart = renderKeyboard(cardState.scaleButton.keyboard, displayNotes, rootNotes, ROLE_COLORS.extension, { octaveCount: 2 });
+  renderOptionalScaleButton(cardState, cardState.scalePentatonicButton, scalePentatonic, "scalePentatonic");
 
   cardState.nonRootScale = nonRoot;
   const relativeScaleNotes = makeOrderedScaleNotes(nonRoot.semitones, 1);
   const relativeDisplayNotes = relativeScaleNotes.map((note) => note.display);
   const relativeRootNotes = [3, 4].map((octave) => `${SHARP_NAMES[nonRoot.rootSemitone]}${octave}`);
+  const relativePentatonic = getPentatonicScale(cardState.chord, nonRoot);
 
   cardState.relativeNotes = relativeScaleNotes.map((note) => note.play);
   cardState.relativeButton.text.textContent = nonRoot.name;
@@ -255,6 +289,35 @@ function refreshScale(cardState) {
     { octaveCount: 2 },
   );
   cardState.relation.textContent = nonRoot.relationship;
+  renderOptionalScaleButton(cardState, cardState.relativePentatonicButton, relativePentatonic, "relativePentatonic");
+}
+
+function renderOptionalScaleButton(cardState, playButton, scale, statePrefix) {
+  const notesKey = `${statePrefix}Notes`;
+  const chartKey = `${statePrefix}Chart`;
+
+  if (!scale) {
+    playButton.button.classList.add("is-hidden");
+    playButton.button.setAttribute("aria-hidden", "true");
+    playButton.button.removeAttribute("aria-label");
+    playButton.keyboard.replaceChildren();
+    playButton.text.textContent = "Pentatonic";
+    cardState[notesKey] = [];
+    cardState[chartKey] = null;
+    return;
+  }
+
+  const scaleNotes = makeOrderedScaleNotes(scale.semitones, 1);
+  const displayNotes = scaleNotes.map((note) => note.display);
+  const rootNotes = displayNotes.filter((note) => noteSemitone(note) === scale.rootSemitone);
+
+  playButton.button.classList.remove("is-hidden");
+  playButton.button.removeAttribute("aria-hidden");
+  playButton.text.textContent = scale.name;
+  playButton.button.setAttribute("aria-label", `Play ${scale.name}`);
+  playButton.keyboard.replaceChildren();
+  cardState[notesKey] = scaleNotes.map((note) => note.play);
+  cardState[chartKey] = renderKeyboard(playButton.keyboard, displayNotes, rootNotes, ROLE_COLORS.extension, { octaveCount: 2 });
 }
 
 function renderKeyboard(target, highlightedNotes, rootNotes, highlightColor, options = {}) {
@@ -651,6 +714,45 @@ function getNonRootScale(chord, selectedScale) {
     : `${chosen.name} is not the same pitch collection as ${selectedScale.scaleName}, but it fits ${chord.symbol} because it contains ${chordToneNames}.`;
 
   return { ...chosen, relationship };
+}
+
+function getPentatonicScale(chord, parentScale) {
+  if (parentScale.family === "pentatonic" || /Pentatonic/i.test(parentScale.scaleName || parentScale.name)) {
+    return null;
+  }
+
+  const parentSet = new Set(parentScale.semitones.map(normalizeSemitone));
+  const chordTones = [...new Set(chord.semitones.map(normalizeSemitone))];
+
+  const candidates = pentatonicCorpus.map((scale) => {
+    const scaleSet = new Set(scale.semitones.map(normalizeSemitone));
+    const isSubset = [...scaleSet].every((tone) => parentSet.has(tone));
+    const overlap = chordTones.filter((tone) => scaleSet.has(tone)).length;
+    const includesRoot = scaleSet.has(chord.rootSemitone);
+    const sameRoot = scale.rootSemitone === parentScale.rootSemitone;
+    const nameScore = scorePentatonicName(scale, parentScale);
+
+    return {
+      ...scale,
+      overlap,
+      includesRoot,
+      sameRoot,
+      isSubset,
+      score: (isSubset ? 1000 : 0) + (sameRoot ? 300 : 0) + (includesRoot ? 80 : 0) + overlap * 35 + nameScore,
+    };
+  }).filter((scale) => scale.isSubset && scale.overlap >= 3)
+    .sort((a, b) => b.score - a.score || a.rootSemitone - b.rootSemitone || a.name.localeCompare(b.name));
+
+  return candidates[0] || null;
+}
+
+function scorePentatonicName(scale, parentScale) {
+  const parentName = `${parentScale.scaleName || parentScale.name} ${parentScale.family || ""}`;
+  if (/Dorian|Aeolian|Minor/i.test(parentName) && /Minor Pentatonic/i.test(scale.name)) return 90;
+  if (/Ionian|Lydian|major/i.test(parentName) && /Major Pentatonic/i.test(scale.name)) return 90;
+  if (/Mixolydian|dominant/i.test(parentName) && /Dominant Pentatonic/i.test(scale.name)) return 90;
+  if (/sus|Suspended/i.test(parentName) && /Sus Pentatonic/i.test(scale.name)) return 90;
+  return 0;
 }
 
 function scoreScaleCandidate(scale, selectedScale, selectedSet) {
