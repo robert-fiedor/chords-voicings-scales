@@ -24,6 +24,7 @@ let reverb = null;
 let activeNotes = [];
 let activeTimers = [];
 let activeElements = [];
+let activeCharts = [];
 let playbackToken = 0;
 let selectedRootSemitone = 0;
 
@@ -412,7 +413,7 @@ function renderKeyboard(target, highlightedNotes, rootNotes, highlightColor, opt
     const textColor = getKeyTextColor(fill);
     return `
       <g>
-        <rect x="${index * whiteWidth}" y="0" width="${whiteWidth}" height="${height}" rx="4" fill="${fill}" stroke="#1f2530" stroke-width="1.5"></rect>
+        <rect data-note="${key}" data-base-fill="${fill}" data-base-stroke="#1f2530" data-base-stroke-width="1.5" x="${index * whiteWidth}" y="0" width="${whiteWidth}" height="${height}" rx="4" fill="${fill}" stroke="#1f2530" stroke-width="1.5"></rect>
         <text x="${index * whiteWidth + whiteWidth / 2}" y="105" text-anchor="middle" fill="${textColor}" font-size="11" font-weight="750">${stripOctave(note)}</text>
       </g>
     `;
@@ -425,7 +426,7 @@ function renderKeyboard(target, highlightedNotes, rootNotes, highlightColor, opt
     const x = (afterWhite + 1) * whiteWidth - blackWidth / 2;
     return `
       <g>
-        <rect x="${x}" y="0" width="${blackWidth}" height="${blackHeight}" rx="4" fill="${fill}" stroke="#111827" stroke-width="1"></rect>
+        <rect data-note="${key}" data-base-fill="${fill}" data-base-stroke="#111827" data-base-stroke-width="1" x="${x}" y="0" width="${blackWidth}" height="${blackHeight}" rx="4" fill="${fill}" stroke="#111827" stroke-width="1"></rect>
         <text x="${x + blackWidth / 2}" y="58" text-anchor="middle" fill="${textColor}" font-size="9" font-weight="750">${stripOctave(note)}</text>
       </g>
     `;
@@ -438,7 +439,17 @@ function renderKeyboard(target, highlightedNotes, rootNotes, highlightColor, opt
     </svg>
   `;
 
-  return { keyDown() {} };
+  return {
+    keyDown(note) {
+      getKeyRects(target, note).forEach((rect) => setKeyActive(rect));
+    },
+    keyUp(note) {
+      getKeyRects(target, note).forEach((rect) => restoreKey(rect));
+    },
+    allUp() {
+      target.querySelectorAll("rect[data-note]").forEach((rect) => forceRestoreKey(rect));
+    },
+  };
 }
 
 function makeChordNotes(semitones) {
@@ -451,6 +462,38 @@ function makeChordNotes(semitones) {
     const note = `${SHARP_NAMES[semitone]}${octave}`;
     return { display: note, play: note };
   });
+}
+
+function getKeyRects(target, note) {
+  const key = noteKey(note);
+  return Array.from(target.querySelectorAll("rect[data-note]")).filter((rect) => rect.dataset.note === key);
+}
+
+function setKeyActive(rect) {
+  const activeCount = Number(rect.dataset.activeCount || 0) + 1;
+  rect.dataset.activeCount = String(activeCount);
+  rect.dataset.wasActive = "true";
+  rect.setAttribute("fill", "#fff176");
+  rect.setAttribute("stroke", "#0f172a");
+  rect.setAttribute("stroke-width", "2.6");
+  rect.style.filter = "drop-shadow(0 0 7px rgba(255, 214, 10, 0.78))";
+}
+
+function restoreKey(rect) {
+  const activeCount = Math.max(0, Number(rect.dataset.activeCount || 0) - 1);
+  rect.dataset.activeCount = String(activeCount);
+  if (activeCount > 0) return;
+
+  forceRestoreKey(rect);
+}
+
+function forceRestoreKey(rect) {
+  rect.removeAttribute("data-active-count");
+  rect.removeAttribute("data-was-active");
+  rect.setAttribute("fill", rect.dataset.baseFill || "#ffffff");
+  rect.setAttribute("stroke", rect.dataset.baseStroke || "#1f2530");
+  rect.setAttribute("stroke-width", rect.dataset.baseStrokeWidth || "1");
+  rect.style.filter = "";
 }
 
 function makeVoicingNotes(chord) {
@@ -928,13 +971,20 @@ async function ensureSampler() {
 
 async function playChord(notes, button, chart) {
   await ensureSampler();
+  const token = playbackToken + 1;
   const now = Tone.now();
+  const duration = 1.4;
+
   stopActive(now);
+  playbackToken = token;
   setPlaying([button], [chart], notes);
   notes.forEach((note, index) => {
-    sampler.triggerAttackRelease(note, 1.4, now + index * 0.018, 0.78);
+    const offset = index * 0.018;
+    sampler.triggerAttackRelease(note, duration, now + offset, 0.78);
+    scheduleKeyDown(chart, note, offset, token);
+    scheduleKeyUp(chart, note, offset + duration, token);
   });
-  activeTimers.push(window.setTimeout(clearActiveUi, 520));
+  activeTimers.push(window.setTimeout(clearActiveUi, (duration + notes.length * 0.018 + 0.08) * 1000));
 }
 
 async function playScale(notes, button, chart) {
@@ -948,11 +998,11 @@ async function playScale(notes, button, chart) {
   setPlaying([button], [chart], notes);
 
   notes.forEach((note, index) => {
-    sampler.triggerAttackRelease(note, 0.18, now + index * step, 0.78);
-    activeTimers.push(window.setTimeout(() => {
-      if (playbackToken !== token) return;
-      chart.keyDown(note);
-    }, index * step * 1000));
+    const offset = index * step;
+    const duration = 0.18;
+    sampler.triggerAttackRelease(note, duration, now + offset, 0.78);
+    scheduleKeyDown(chart, note, offset, token);
+    scheduleKeyUp(chart, note, offset + duration, token);
   });
 
   activeTimers.push(window.setTimeout(clearActiveUi, (notes.length * step + 0.32) * 1000));
@@ -971,17 +1021,19 @@ async function playInnerVoicingA(pattern, button, chart, displayNotes) {
 
   pattern.sustainNotes.forEach((note) => {
     sampler.triggerAttackRelease(note, sustainSeconds, now, 0.72);
+    scheduleKeyDown(chart, note, 0, token);
+    scheduleKeyUp(chart, note, sustainSeconds, token);
   });
 
   pattern.innerClusters.forEach((cluster, index) => {
-    const startTime = now + 0.18 + index * eighthAt90Bpm;
+    const offset = 0.18 + index * eighthAt90Bpm;
+    const startTime = now + offset;
+    const duration = eighthAt90Bpm * 0.94;
     cluster.forEach((note) => {
-      sampler.triggerAttackRelease(note, eighthAt90Bpm * 0.94, startTime, 0.74);
+      sampler.triggerAttackRelease(note, duration, startTime, 0.74);
+      scheduleKeyDown(chart, note, offset, token);
+      scheduleKeyUp(chart, note, offset + duration, token);
     });
-    activeTimers.push(window.setTimeout(() => {
-      if (playbackToken !== token) return;
-      cluster.forEach((note) => chart.keyDown(note));
-    }, (0.18 + index * eighthAt90Bpm) * 1000));
   });
 
   activeTimers.push(window.setTimeout(clearActiveUi, 1900));
@@ -989,9 +1041,23 @@ async function playInnerVoicingA(pattern, button, chart, displayNotes) {
 
 function setPlaying(elements, charts, notes) {
   activeElements = elements;
+  activeCharts = charts;
   activeNotes = notes;
   elements.forEach((element) => element.classList.add("is-playing"));
-  charts.forEach((chart) => notes.forEach((note) => chart.keyDown(note)));
+}
+
+function scheduleKeyDown(chart, note, offsetSeconds, token) {
+  activeTimers.push(window.setTimeout(() => {
+    if (playbackToken !== token) return;
+    chart.keyDown(note);
+  }, offsetSeconds * 1000));
+}
+
+function scheduleKeyUp(chart, note, offsetSeconds, token) {
+  activeTimers.push(window.setTimeout(() => {
+    if (playbackToken !== token) return;
+    chart.keyUp(note);
+  }, offsetSeconds * 1000));
 }
 
 function stopActive(time = Tone.now()) {
@@ -1012,5 +1078,7 @@ function stopActive(time = Tone.now()) {
 
 function clearActiveUi() {
   activeElements.forEach((element) => element.classList.remove("is-playing"));
+  activeCharts.forEach((chart) => chart.allUp());
   activeElements = [];
+  activeCharts = [];
 }
