@@ -102,6 +102,7 @@ function createChordCard(chord) {
   const chordButton = createPlayButton("Chord");
   const voicingButton = createPlayButton("Voicing");
   const scaleButton = createPlayButton("Scale");
+  const innerVoicingAButton = createPlayButton("Inner voicing A");
   const scalePentatonicButton = createPlayButton("Pentatonic");
   const relativeButton = createPlayButton("Non-root");
   const relativePentatonicButton = createPlayButton("Non-root pentatonic");
@@ -137,6 +138,7 @@ function createChordCard(chord) {
     chordButton,
     voicingButton,
     scaleButton,
+    innerVoicingAButton,
     scalePentatonicButton,
     relativeButton,
     relativePentatonicButton,
@@ -144,6 +146,7 @@ function createChordCard(chord) {
     chordChart: null,
     voicingChart: null,
     scaleChart: null,
+    innerVoicingAChart: null,
     scalePentatonicChart: null,
     relativeChart: null,
     relativePentatonicChart: null,
@@ -159,6 +162,7 @@ function createChordCard(chord) {
     chordButton.button,
     voicingButton.button,
     scaleButton.button,
+    innerVoicingAButton.button,
     scalePentatonicButton.button,
     relativeButton.button,
     relativePentatonicButton.button,
@@ -187,6 +191,7 @@ function setupCardPlayback(cardState) {
   setupChordButton(cardState);
   setupVoicingButton(cardState);
   setupScaleButton(cardState);
+  setupInnerVoicingAButton(cardState);
   setupScalePentatonicButton(cardState);
   setupRelativeButton(cardState);
   setupRelativePentatonicButton(cardState);
@@ -235,6 +240,18 @@ function setupScaleButton(cardState) {
   });
 }
 
+function setupInnerVoicingAButton(cardState) {
+  cardState.innerVoicingAButton.button.addEventListener("click", () => {
+    if (!cardState.innerVoicingANotes?.length) return;
+    playInnerVoicingA(
+      cardState.innerVoicingAPlayback,
+      cardState.innerVoicingAButton.button,
+      cardState.innerVoicingAChart,
+      cardState.innerVoicingANotes,
+    );
+  });
+}
+
 function setupScalePentatonicButton(cardState) {
   cardState.scalePentatonicButton.button.addEventListener("click", () => {
     if (!cardState.scalePentatonicNotes?.length) return;
@@ -269,6 +286,7 @@ function refreshScale(cardState) {
   cardState.scaleButton.button.setAttribute("aria-label", `Play ${scale.scaleName}`);
   cardState.scaleButton.keyboard.replaceChildren();
   cardState.scaleChart = renderKeyboard(cardState.scaleButton.keyboard, displayNotes, rootNotes, ROLE_COLORS.extension, { octaveCount: 2 });
+  renderInnerVoicingA(cardState, scale);
   renderOptionalScaleButton(cardState, cardState.scalePentatonicButton, scalePentatonic, "scalePentatonic");
 
   cardState.nonRootScale = nonRoot;
@@ -318,6 +336,61 @@ function renderOptionalScaleButton(cardState, playButton, scale, statePrefix) {
   playButton.keyboard.replaceChildren();
   cardState[notesKey] = scaleNotes.map((note) => note.play);
   cardState[chartKey] = renderKeyboard(playButton.keyboard, displayNotes, rootNotes, ROLE_COLORS.extension, { octaveCount: 2 });
+}
+
+function renderInnerVoicingA(cardState, scale) {
+  const pattern = makeInnerVoicingAPattern(cardState.chord, cardState.voicingNotes, scale);
+  const displayNotes = [...pattern.sustainNotes, ...pattern.innerClusters.flat()];
+  const rootNotes = displayNotes.filter((note) => isSelectedRootNote(note));
+  const noteColors = Object.fromEntries(pattern.innerClusters.flat().map((note) => [noteKey(note), ROLE_COLORS.extension]));
+
+  pattern.sustainNotes.forEach((note, index) => {
+    noteColors[noteKey(note)] = pattern.sustainColors[index] || ROLE_COLORS.seventh;
+  });
+
+  cardState.innerVoicingAPlayback = pattern;
+  cardState.innerVoicingANotes = displayNotes;
+  cardState.innerVoicingAButton.text.textContent = "Inner voicing A";
+  cardState.innerVoicingAButton.button.setAttribute("aria-label", `Play ${cardState.chord.symbol} inner voicing A`);
+  cardState.innerVoicingAButton.keyboard.replaceChildren();
+  cardState.innerVoicingAChart = renderKeyboard(
+    cardState.innerVoicingAButton.keyboard,
+    displayNotes,
+    rootNotes,
+    ROLE_COLORS.extension,
+    { octaveCount: 2, noteColors },
+  );
+}
+
+function makeInnerVoicingAPattern(chord, voicingNotes, scale) {
+  const sortedVoicingNotes = [...voicingNotes].sort((a, b) => noteMidi(a) - noteMidi(b));
+  const sustainNotes = [sortedVoicingNotes[0], sortedVoicingNotes[sortedVoicingNotes.length - 1]].filter(Boolean);
+  const voicingColors = Object.fromEntries(makeVoicingNotes(chord).map((note) => [noteKey(note.play), note.color]));
+  const sustainColors = sustainNotes.map((note) => voicingColors[noteKey(note)] || ROLE_COLORS.seventh);
+  const innerClusters = [1, 2, 3].map((startDegree) => makeConsecutiveScaleDegreeNotes(scale, startDegree, 3));
+
+  return {
+    sustainNotes,
+    sustainColors,
+    innerClusters,
+    allNotes: [...sustainNotes, ...innerClusters.flat()],
+  };
+}
+
+function makeConsecutiveScaleDegreeNotes(scale, startDegree, length) {
+  const semitones = scale.semitones.map(normalizeSemitone);
+  const notes = [];
+  let octave = 4;
+  let previous = semitones[0];
+
+  for (let degree = 0; degree < startDegree + length; degree += 1) {
+    const semitone = semitones[degree % semitones.length];
+    if (degree > 0 && semitone <= previous) octave += 1;
+    previous = semitone;
+    notes.push(`${SHARP_NAMES[semitone]}${octave}`);
+  }
+
+  return notes.slice(startDegree, startDegree + length);
 }
 
 function renderKeyboard(target, highlightedNotes, rootNotes, highlightColor, options = {}) {
@@ -649,6 +722,14 @@ function noteSemitone(note) {
   return SHARP_NAMES.indexOf(pitchClass);
 }
 
+function noteMidi(note) {
+  const normalized = noteKey(note);
+  const octaveMatch = normalized.match(/\d+$/);
+  const octave = octaveMatch ? Number(octaveMatch[0]) : 4;
+  const semitone = noteSemitone(normalized);
+  return (octave + 1) * 12 + semitone;
+}
+
 function stripOctave(note) {
   return note.replace(/\d+$/, "");
 }
@@ -812,7 +893,10 @@ function transposeScaleName(name, rootName) {
 
 async function ensureSampler() {
   await Tone.start();
-  if (sampler) return;
+  if (sampler) {
+    await Tone.loaded();
+    return;
+  }
 
   reverb = new Tone.Reverb({ decay: 1.3, wet: 0.16 }).toDestination();
   sampler = new Tone.Sampler({
@@ -839,6 +923,7 @@ async function ensureSampler() {
     release: 1.25,
     baseUrl: "https://tonejs.github.io/audio/salamander/",
   }).connect(reverb);
+  await Tone.loaded();
 }
 
 async function playChord(notes, button, chart) {
@@ -871,6 +956,35 @@ async function playScale(notes, button, chart) {
   });
 
   activeTimers.push(window.setTimeout(clearActiveUi, (notes.length * step + 0.32) * 1000));
+}
+
+async function playInnerVoicingA(pattern, button, chart, displayNotes) {
+  await ensureSampler();
+  const token = playbackToken + 1;
+  const now = Tone.now();
+  const eighthAt90Bpm = 60 / 90 / 2;
+  const sustainSeconds = 1.72;
+
+  stopActive(now);
+  playbackToken = token;
+  setPlaying([button], [chart], displayNotes);
+
+  pattern.sustainNotes.forEach((note) => {
+    sampler.triggerAttackRelease(note, sustainSeconds, now, 0.72);
+  });
+
+  pattern.innerClusters.forEach((cluster, index) => {
+    const startTime = now + 0.18 + index * eighthAt90Bpm;
+    cluster.forEach((note) => {
+      sampler.triggerAttackRelease(note, eighthAt90Bpm * 0.94, startTime, 0.74);
+    });
+    activeTimers.push(window.setTimeout(() => {
+      if (playbackToken !== token) return;
+      cluster.forEach((note) => chart.keyDown(note));
+    }, (0.18 + index * eighthAt90Bpm) * 1000));
+  });
+
+  activeTimers.push(window.setTimeout(clearActiveUi, 1900));
 }
 
 function setPlaying(elements, charts, notes) {
