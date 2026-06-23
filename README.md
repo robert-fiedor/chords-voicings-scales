@@ -11,3 +11,7 @@ git config core.hooksPath .githooks
 Published with GitHub Pages:
 
 https://robert-fiedor.github.io/chords-voicings-scales/
+
+## References
+
+- Voice syncs: https://youtu.be/5vk0YxJ62Pk?is=Clyf6juQdTYoXIyL
