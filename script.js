@@ -359,7 +359,7 @@ function renderInnerVoicingA(cardState, scale) {
     displayNotes,
     rootNotes,
     ROLE_COLORS.extension,
-    { octaveCount: 3, startOctave: 2, noteColors },
+    { octaveCount: 3, startOctave: 3, noteColors },
   );
 }
 
@@ -391,7 +391,7 @@ function raiseInnerPatternToVoicingRegister(sustainNotes, innerClusters, voicing
   const voicingMax = Math.max(...voicingNotes.map(noteMidi));
   const innerNotes = [...sustainNotes, ...innerClusters.flat()];
   const innerMax = Math.max(...innerNotes.map(noteMidi));
-  const octaveShift = Math.max(0, Math.floor((voicingMax - innerMax) / 12));
+  const octaveShift = Math.max(0, Math.floor((voicingMax - innerMax) / 12)) + 1;
 
   return {
     sustainNotes: sustainNotes.map((note) => transposeNoteByOctaves(note, octaveShift)),
