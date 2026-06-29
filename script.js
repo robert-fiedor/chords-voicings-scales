@@ -359,19 +359,15 @@ function renderInnerVoicingA(cardState, scale) {
     displayNotes,
     rootNotes,
     ROLE_COLORS.extension,
-    { octaveCount: 2, noteColors },
+    { octaveCount: 3, startOctave: 1, noteColors },
   );
 }
 
 function makeInnerVoicingAPattern(chord, voicingNotes, scale) {
-  const sortedVoicingNotes = [...voicingNotes].sort((a, b) => noteMidi(a) - noteMidi(b));
-  const sustainNotes = [sortedVoicingNotes[0], sortedVoicingNotes[sortedVoicingNotes.length - 1]].filter(Boolean);
+  const sustainNotes = makeInnerVoicingShell(chord, scale);
   const voicingColors = Object.fromEntries(makeVoicingNotes(chord).map((note) => [noteKey(note.play), note.color]));
   const sustainColors = sustainNotes.map((note) => voicingColors[noteKey(note)] || ROLE_COLORS.seventh);
-  const innerClusters = [1, 2, 3].map((startDegree) => {
-    const cluster = makeConsecutiveScaleDegreeNotes(scale, startDegree, 3);
-    return invertClusterInsideVoicing(cluster, sustainNotes[0], sustainNotes[sustainNotes.length - 1]);
-  });
+  const innerClusters = makeDescendingInnerTriads(scale);
 
   return {
     sustainNotes,
@@ -381,35 +377,42 @@ function makeInnerVoicingAPattern(chord, voicingNotes, scale) {
   };
 }
 
-function makeConsecutiveScaleDegreeNotes(scale, startDegree, length) {
-  const semitones = scale.semitones.map(normalizeSemitone);
-  const notes = [];
-  let octave = 4;
-  let previous = semitones[0];
-
-  for (let degree = 0; degree < startDegree + length; degree += 1) {
-    const semitone = semitones[degree % semitones.length];
-    if (degree > 0 && semitone <= previous) octave += 1;
-    previous = semitone;
-    notes.push(`${SHARP_NAMES[semitone]}${octave}`);
-  }
-
-  return notes.slice(startDegree, startDegree + length);
+function makeInnerVoicingShell(chord, scale) {
+  const root = `${SHARP_NAMES[chord.rootSemitone]}1`;
+  const secondDegree = scale.semitones[1] ?? normalizeSemitone(chord.rootSemitone + 2);
+  const second = `${SHARP_NAMES[normalizeSemitone(secondDegree)]}3`;
+  return [root, second];
 }
 
-function invertClusterInsideVoicing(cluster, lowNote, highNote) {
-  if (!lowNote || !highNote) return cluster;
+function makeDescendingInnerTriads(scale) {
+  return [2, 1, 0].map((rootDegree, index) => makeShapedScaleTriad(scale, rootDegree, index));
+}
 
-  const lowMidi = noteMidi(lowNote);
-  const highMidi = noteMidi(highNote);
-  return cluster.map((note) => {
-    let midi = noteMidi(note);
+function makeShapedScaleTriad(scale, rootDegree, triadIndex) {
+  const semitones = scale.semitones.map(normalizeSemitone);
+  const rootMidi = midiForScaleDegree(semitones, rootDegree, triadIndex === 0 ? 3 : 2);
+  let thirdMidi = midiForScaleDegree(semitones, rootDegree + 2, triadIndex === 0 ? 3 : 2);
+  let fifthMidi = midiForScaleDegree(semitones, rootDegree + 4, triadIndex === 0 ? 3 : 2);
 
-    while (midi > highMidi) midi -= 12;
-    while (midi <= lowMidi && midi + 12 <= highMidi) midi += 12;
+  if (triadIndex === 0) {
+    while (thirdMidi >= rootMidi) thirdMidi -= 12;
+    while (fifthMidi >= rootMidi) fifthMidi -= 12;
+  } else {
+    while (thirdMidi <= rootMidi) thirdMidi += 12;
+    while (fifthMidi <= thirdMidi) fifthMidi += 12;
+  }
 
-    return noteFromMidi(midi);
-  }).sort((a, b) => noteMidi(a) - noteMidi(b));
+  return [noteFromMidi(rootMidi), noteFromMidi(fifthMidi), noteFromMidi(thirdMidi)];
+}
+
+function midiForScaleDegree(semitones, degree, baseOctave) {
+  const normalizedDegree = ((degree % semitones.length) + semitones.length) % semitones.length;
+  const wraps = Math.floor(degree / semitones.length);
+  const semitone = semitones[normalizedDegree];
+  let midi = (baseOctave + 1 + wraps) * 12 + semitone;
+
+  if (normalizedDegree > 0 && semitone < semitones[0]) midi += 12;
+  return midi;
 }
 
 function renderKeyboard(target, highlightedNotes, rootNotes, highlightColor, options = {}) {
@@ -417,8 +420,9 @@ function renderKeyboard(target, highlightedNotes, rootNotes, highlightColor, opt
   const roots = new Set(rootNotes.map(noteKey));
   const noteColors = options.noteColors || {};
   const octaveCount = options.octaveCount || 1;
-  const whiteNotes = buildWhiteNotes(octaveCount);
-  const blackNotes = buildBlackNotes(octaveCount);
+  const startOctave = options.startOctave || 3;
+  const whiteNotes = buildWhiteNotes(octaveCount, startOctave);
+  const blackNotes = buildBlackNotes(octaveCount, startOctave);
   const whiteWidth = 44;
   const blackWidth = 26;
   const blackHeight = 72;
@@ -733,21 +737,21 @@ function normalizeSemitone(value) {
   return ((Number(value) % 12) + 12) % 12;
 }
 
-function buildWhiteNotes(octaveCount = 1) {
+function buildWhiteNotes(octaveCount = 1, startOctave = 3) {
   const notes = [];
-  for (let octave = 3; octave <= 3 + octaveCount; octave += 1) {
+  for (let octave = startOctave; octave <= startOctave + octaveCount; octave += 1) {
     ["C", "D", "E", "F", "G", "A", "B"].forEach((name) => {
-      if (octave === 3 + octaveCount && name !== "C") return;
+      if (octave === startOctave + octaveCount && name !== "C") return;
       notes.push(`${name}${octave}`);
     });
   }
   return notes;
 }
 
-function buildBlackNotes(octaveCount = 1) {
+function buildBlackNotes(octaveCount = 1, startOctave = 3) {
   const notes = [];
-  for (let octave = 3; octave < 3 + octaveCount; octave += 1) {
-    const offset = (octave - 3) * 7;
+  for (let octave = startOctave; octave < startOctave + octaveCount; octave += 1) {
+    const offset = (octave - startOctave) * 7;
     [
       ["C#", 0],
       ["D#", 1],
