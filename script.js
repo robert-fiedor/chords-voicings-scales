@@ -1059,8 +1059,9 @@ async function playInnerVoicingA(pattern, button, chart, displayNotes) {
   await ensureSampler();
   const token = playbackToken + 1;
   const now = Tone.now();
-  const eighthAt90Bpm = 60 / 90 / 2;
-  const sustainSeconds = 1.72;
+  const eighthAt45Bpm = 60 / 45 / 2;
+  const sustainSeconds = 3.44;
+  const motionStartSeconds = 0.36;
 
   stopActive(now);
   playbackToken = token;
@@ -1073,9 +1074,9 @@ async function playInnerVoicingA(pattern, button, chart, displayNotes) {
   });
 
   pattern.innerClusters.forEach((cluster, index) => {
-    const offset = 0.18 + index * eighthAt90Bpm;
+    const offset = motionStartSeconds + index * eighthAt45Bpm;
     const startTime = now + offset;
-    const duration = eighthAt90Bpm * 0.94;
+    const duration = eighthAt45Bpm * 0.94;
     cluster.forEach((note) => {
       sampler.triggerAttackRelease(note, duration, startTime, 0.74);
       scheduleKeyDown(chart, note, offset, token);
@@ -1083,7 +1084,7 @@ async function playInnerVoicingA(pattern, button, chart, displayNotes) {
     });
   });
 
-  activeTimers.push(window.setTimeout(clearActiveUi, 1900));
+  activeTimers.push(window.setTimeout(clearActiveUi, 3800));
 }
 
 function setPlaying(elements, charts, notes) {
