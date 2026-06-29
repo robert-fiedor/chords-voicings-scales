@@ -359,15 +359,18 @@ function renderInnerVoicingA(cardState, scale) {
     displayNotes,
     rootNotes,
     ROLE_COLORS.extension,
-    { octaveCount: 3, startOctave: 1, noteColors },
+    { octaveCount: 3, startOctave: 2, noteColors },
   );
 }
 
 function makeInnerVoicingAPattern(chord, voicingNotes, scale) {
-  const sustainNotes = makeInnerVoicingShell(chord, scale);
+  const baseSustainNotes = makeInnerVoicingShell(chord, scale);
+  const baseInnerClusters = makeDescendingInnerTriads(scale);
+  const raisedPattern = raiseInnerPatternToVoicingRegister(baseSustainNotes, baseInnerClusters, voicingNotes);
+  const sustainNotes = raisedPattern.sustainNotes;
   const voicingColors = Object.fromEntries(makeVoicingNotes(chord).map((note) => [noteKey(note.play), note.color]));
   const sustainColors = sustainNotes.map((note) => voicingColors[noteKey(note)] || ROLE_COLORS.seventh);
-  const innerClusters = makeDescendingInnerTriads(scale);
+  const innerClusters = raisedPattern.innerClusters;
 
   return {
     sustainNotes,
@@ -382,6 +385,22 @@ function makeInnerVoicingShell(chord, scale) {
   const secondDegree = scale.semitones[1] ?? normalizeSemitone(chord.rootSemitone + 2);
   const second = `${SHARP_NAMES[normalizeSemitone(secondDegree)]}3`;
   return [root, second];
+}
+
+function raiseInnerPatternToVoicingRegister(sustainNotes, innerClusters, voicingNotes) {
+  const voicingMax = Math.max(...voicingNotes.map(noteMidi));
+  const innerNotes = [...sustainNotes, ...innerClusters.flat()];
+  const innerMax = Math.max(...innerNotes.map(noteMidi));
+  const octaveShift = Math.max(0, Math.floor((voicingMax - innerMax) / 12));
+
+  return {
+    sustainNotes: sustainNotes.map((note) => transposeNoteByOctaves(note, octaveShift)),
+    innerClusters: innerClusters.map((cluster) => cluster.map((note) => transposeNoteByOctaves(note, octaveShift))),
+  };
+}
+
+function transposeNoteByOctaves(note, octaves) {
+  return noteFromMidi(noteMidi(note) + octaves * 12);
 }
 
 function makeDescendingInnerTriads(scale) {
