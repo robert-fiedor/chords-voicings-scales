@@ -368,7 +368,10 @@ function makeInnerVoicingAPattern(chord, voicingNotes, scale) {
   const sustainNotes = [sortedVoicingNotes[0], sortedVoicingNotes[sortedVoicingNotes.length - 1]].filter(Boolean);
   const voicingColors = Object.fromEntries(makeVoicingNotes(chord).map((note) => [noteKey(note.play), note.color]));
   const sustainColors = sustainNotes.map((note) => voicingColors[noteKey(note)] || ROLE_COLORS.seventh);
-  const innerClusters = [1, 2, 3].map((startDegree) => makeConsecutiveScaleDegreeNotes(scale, startDegree, 3));
+  const innerClusters = [1, 2, 3].map((startDegree) => {
+    const cluster = makeConsecutiveScaleDegreeNotes(scale, startDegree, 3);
+    return invertClusterInsideVoicing(cluster, sustainNotes[0], sustainNotes[sustainNotes.length - 1]);
+  });
 
   return {
     sustainNotes,
@@ -392,6 +395,21 @@ function makeConsecutiveScaleDegreeNotes(scale, startDegree, length) {
   }
 
   return notes.slice(startDegree, startDegree + length);
+}
+
+function invertClusterInsideVoicing(cluster, lowNote, highNote) {
+  if (!lowNote || !highNote) return cluster;
+
+  const lowMidi = noteMidi(lowNote);
+  const highMidi = noteMidi(highNote);
+  return cluster.map((note) => {
+    let midi = noteMidi(note);
+
+    while (midi > highMidi) midi -= 12;
+    while (midi <= lowMidi && midi + 12 <= highMidi) midi += 12;
+
+    return noteFromMidi(midi);
+  }).sort((a, b) => noteMidi(a) - noteMidi(b));
 }
 
 function renderKeyboard(target, highlightedNotes, rootNotes, highlightColor, options = {}) {
@@ -771,6 +789,12 @@ function noteMidi(note) {
   const octave = octaveMatch ? Number(octaveMatch[0]) : 4;
   const semitone = noteSemitone(normalized);
   return (octave + 1) * 12 + semitone;
+}
+
+function noteFromMidi(midi) {
+  const semitone = normalizeSemitone(midi);
+  const octave = Math.floor(midi / 12) - 1;
+  return `${SHARP_NAMES[semitone]}${octave}`;
 }
 
 function stripOctave(note) {
